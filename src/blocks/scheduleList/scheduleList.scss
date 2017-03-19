@@ -1,23 +1,29 @@
-$schedule: '.schedule';
+$scheduleList: '.scheduleList';
 
-#{$schedule} {
+#{$scheduleList} {
     position: relative;
     display: block;
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 0 15px;
 
     &__wrapper {
         position: relative;
         display: block;
     }
 
-    &__header {
+    &__content {
         position: relative;
         display: block;
     }
 
-    &__content {
+    &__list {
+        @include clearfix;
+    }
+
+    &__list,
+    &__item {
+        @include list-reset;
+    }
+
+    &__item {
         position: relative;
         display: block;
     }

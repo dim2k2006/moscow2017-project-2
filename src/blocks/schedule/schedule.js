@@ -12,6 +12,8 @@
 
         self.container = document.querySelector('.schedule');
         self.endPoint = 'https://raw.githubusercontent.com/dim2k2006/moscow2017-project-1/master/src/schedule.json';
+        self.template = document.querySelector('#scheduleItem-template').innerHTML;
+        self.list = document.querySelector('.scheduleList__list');
         self.dataList = '';
 
         /**
@@ -33,21 +35,31 @@
                     return;
                 }
 
-                console.log(this.responseText);
+                self.dataList = JSON.parse(this.responseText);
 
-                // self.dataList = JSON.parse(this.responseText);
-
-                // console.log(self.dataList);
-
-                // self.render();
+                self.render(self.dataList);
             };
         };
 
         /**
          * Render schedule
          */
-        self.render = function() {
-            console.log(self.dataList);
+        self.render = function(list) {
+            list.forEach(function(item) {
+                var element = document.createElement('li');
+
+                element.classList.add('scheduleList__item');
+                element.innerHTML = self.template;
+
+                element.querySelector('.scheduleItem__date').innerHTML = item.data;
+                element.querySelector('.scheduleItem__time').innerHTML = item.time;
+                element.querySelector('.scheduleItem__title').innerHTML = item.title;
+                // element.querySelector('.scheduleItem__school').innerHTML = item.title; // school need loop
+                element.querySelector('.scheduleItem__author').innerHTML = item.author.name;
+                element.querySelector('.scheduleItem__place').innerHTML = item.place;
+
+                self.list.appendChild(element); // create set of items and insert them in html after loop only once
+            });
         };
 
         /**

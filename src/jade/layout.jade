@@ -30,7 +30,30 @@ html(lang="ru")
 
             block content
 
+        script(type="x-template", id="scheduleItem-template").
+            <div class="scheduleItem">
+                <div class="scheduleItem__wrapper">
+                    <div class="scheduleItem__col scheduleItem__col_1">
+                        <div class="scheduleItem__date"></div>
+
+                        <div class="scheduleItem__time"></div>
+                    </div>
+
+                    <div class="scheduleItem__col scheduleItem__col_2">
+                        <div class="scheduleItem__title"></div>
+
+                        <div class="scheduleItem__school"></div>
+
+                        <div class="scheduleItem__author"></div>
+
+                        <div class="scheduleItem__place"></div>
+                    </div>
+                </div>
+            </div>
+
+
         script.
             var app = {};
 
         script(src='scripts/main.min.js')
+
