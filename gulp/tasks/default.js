@@ -8,7 +8,6 @@ gulp.task('default', () => (
         'images',
         'styles-dependencies',
         'styles',
-        'scripts-dependencies',
         'scripts',
         'markup',
         'connect',
