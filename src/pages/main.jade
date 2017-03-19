@@ -1,9 +1,11 @@
 extends ../jade/layout
 
 block head
-    - var pageDescription="Главная";
-    - var pageKeywords="Главная";
-    - var pageTitle="Главная";
+    - var pageDescription="Расписание лекций проекта «Мобилизация»";
+    - var pageKeywords="Расписание лекций проекта «Мобилизация»";
+    - var pageTitle="Расписание лекций проекта «Мобилизация»";
 
 block content
-    h1 контент
+    include ../blocks/schedule/schedule
+
+    +schedule

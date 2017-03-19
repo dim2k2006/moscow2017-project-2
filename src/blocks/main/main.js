@@ -1,4 +1,4 @@
-var initApp = function () {
+var initApp = function() {
     if ('modules' in app && 'main' in app.modules) {
         return;
     }
@@ -7,7 +7,7 @@ var initApp = function () {
      * Creates a new Main class.
      * @class
      */
-    var Main = function () {
+    var Main = function() {
         var self = this;
 
         self.html = document.querySelector('html');
@@ -49,7 +49,5 @@ var initApp = function () {
 
     app.modules.main.init();
 };
-
-var app = {};
 
 window.addEventListener('load', initApp);
