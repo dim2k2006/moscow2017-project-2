@@ -99,8 +99,8 @@ a {
     text-decoration: none;
 
     &:hover {
-        color: lighten($color-black, 10%);
-        text-decoration: underline;
+        color: $color-red;
+        text-decoration: none;
     }
 }
 
