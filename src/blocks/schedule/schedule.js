@@ -11,7 +11,7 @@
         var self = this;
 
         self.container = document.querySelector('.schedule');
-        self.endPoint = 'https://raw.githubusercontent.com/dim2k2006/moscow2017-project-1/master/src/schedule.json';
+        self.endPoint = 'https://raw.githubusercontent.com/dim2k2006/moscow2017-project-1/master/src/schedule.json?cache=' + Math.random();
         self.template = document.querySelector('#scheduleItem-template').innerHTML;
         self.list = document.querySelector('.scheduleList__list');
         self.dataList = '';
