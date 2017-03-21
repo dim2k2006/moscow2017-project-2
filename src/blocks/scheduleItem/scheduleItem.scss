@@ -49,7 +49,7 @@ $scheduleItem: '.scheduleItem';
     &__title {
         position: relative;
         display: block;
-        margin-bottom: .4em;
+        margin-bottom: .2em;
         font-size: $font-size-mediumplus;
         line-height: $line-height-presmall;
         color: $color-cobalt;
@@ -58,7 +58,7 @@ $scheduleItem: '.scheduleItem';
     &__school {
         position: relative;
         display: block;
-        margin-bottom: .6em;
+        margin-bottom: .4em;
         font-size: $font-size-smaller;
         line-height: $line-height-prelittle;
         @include clearfix;
@@ -86,17 +86,21 @@ $scheduleItem: '.scheduleItem';
         background-color: $color-eucalyptus;
     }
 
-    &__author {
-        position: relative;
-        display: block;
-        font-size: $font-size-predefault;
-        line-height: $line-height-presmall;
-        color: rgba($color-black, .8);
-    }
-
+    &__author,
     &__place {
         position: relative;
         display: block;
-        color: rgba($color-black, .8);
+        margin-bottom: .3em;
+        font-size: $font-size-predefault;
+        line-height: $line-height-presmall;
+        color: $color-oxford-blue;
+
+        @include f-last(1) {
+            margin-bottom: 0;
+        }
+
+        span {
+            opacity: .5;
+        }
     }
 }

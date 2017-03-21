@@ -52,11 +52,11 @@
                 element.classList.add('scheduleList__item');
                 element.innerHTML = self.template;
 
-                element.querySelector('.scheduleItem__date').innerHTML = item.data;
+                element.querySelector('.scheduleItem__day').innerHTML = item.date;
                 element.querySelector('.scheduleItem__time').innerHTML = item.time;
                 element.querySelector('.scheduleItem__title').innerHTML = item.title;
-                element.querySelector('.scheduleItem__author').innerHTML = item.author.name;
-                element.querySelector('.scheduleItem__place').innerHTML = item.place;
+                element.querySelector('.scheduleItem__author').innerHTML += item.author.name;
+                element.querySelector('.scheduleItem__place').innerHTML += item.place;
 
                 item.school.forEach(function(item) {
                     schools += '<span class="scheduleItem__' + item.id +'">'+ item.name +'</span>';
