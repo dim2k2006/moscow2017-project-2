@@ -26,5 +26,10 @@ $scheduleList: '.scheduleList';
     &__item {
         position: relative;
         display: block;
+        margin-bottom: 15px;
+
+        @include f-last(1) {
+            margin-bottom: 0;
+        }
     }
 }

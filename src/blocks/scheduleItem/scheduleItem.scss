@@ -17,6 +17,18 @@ $scheduleItem: '.scheduleItem';
         position: relative;
         display: block;
         @include clearfix;
+
+        &:before {
+            content: '';
+            position: absolute;
+            display: block;
+            width: 1px;
+            height: calc(100% - 40px);
+            top: 50%;
+            left: 200px;
+            transform: translateY(-50%);
+            background: rgba($color-iron, .5);
+        }
     }
 
     &__col {
@@ -31,19 +43,40 @@ $scheduleItem: '.scheduleItem';
 
         &#{$scheduleItem}__col_2 {
             width: calc(100% - 200px);
-
-            &:before {
-                content: '';
-                position: absolute;
-                display: block;
-                width: 1px;
-                height: calc(100% - 40px);
-                top: 50%;
-                left: 0;
-                transform: translateY(-50%);
-                background: rgba($color-iron, .5);
-            }
         }
+    }
+
+    &__date {
+        position: relative;
+        display: block;
+        text-align: center;
+    }
+
+    &__day {
+        position: relative;
+        display: block;
+        margin-bottom: -10px;
+        font-weight: 700;
+        font-size: $font-size-extrahuge;
+        line-height: $line-height-prelittle;
+        color: rgba($color-black, .1);
+    }
+
+    &__month {
+        position: relative;
+        display: block;
+        margin-bottom: .4em;
+        font-size: $font-size-semilarge;
+        line-height: $line-height-prelittle;
+        color: rgba($color-black, .2);
+    }
+
+    &__time {
+        position: relative;
+        display: block;
+        font-size: $font-size-default;
+        line-height: $line-height-prelittle;
+        color: rgba($color-black, .3);
     }
 
     &__title {
