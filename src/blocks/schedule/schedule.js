@@ -77,8 +77,8 @@
                 element.querySelector('.scheduleItem__month').innerHTML = month;
                 element.querySelector('.scheduleItem__time').innerHTML = item.time;
                 element.querySelector('.scheduleItem__title').innerHTML = item.title;
-                element.querySelector('.scheduleItem__author').innerHTML += item.author.name;
-                element.querySelector('.scheduleItem__place').innerHTML += item.place;
+                element.querySelector('.scheduleItem__author__link').innerHTML += item.author.name;
+                element.querySelector('.scheduleItem__place__link').innerHTML += item.place.title;
 
                 item.school.forEach(function(item) {
                     schools += '<span class="scheduleItem__' + item.id +'">'+ item.name +'</span>';
