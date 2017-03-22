@@ -66,6 +66,7 @@
             list.forEach(function(item) {
                 var element = document.createElement('li'),
                     schools = '',
+                    authors = '';
                     date = new Date(item.date),
                     day = date.getDate();
                     month = self.monthNames[date.getMonth()];
@@ -77,14 +78,20 @@
                 element.querySelector('.scheduleItem__month').innerHTML = month;
                 element.querySelector('.scheduleItem__time').innerHTML = item.time;
                 element.querySelector('.scheduleItem__title').innerHTML = item.title;
-                element.querySelector('.scheduleItem__author__link').innerHTML += item.author.name;
-                element.querySelector('.scheduleItem__place__link').innerHTML += item.place.title;
+                element.querySelector('.scheduleItem__place__link').innerHTML = item.place.title;
+                element.querySelector('.scheduleItem__place__link').href = item.place.link;
 
                 item.school.forEach(function(item) {
                     schools += '<span class="scheduleItem__' + item.id +'">'+ item.name +'</span>';
                 });
 
                 element.querySelector('.scheduleItem__school').innerHTML = schools;
+
+                item.author.forEach(function(item) {
+                    authors += '<li class="scheduleItem__author__item"><span class="scheduleItem__author__label">Лектор:</span> <a class="scheduleItem__author__link modal_trigger" href="#author">'+ item.name +'</a></li>';
+                });
+
+                element.querySelector('.scheduleItem__author__list').innerHTML = authors;
 
                 content.appendChild(element);
             });

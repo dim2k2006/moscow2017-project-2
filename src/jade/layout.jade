@@ -1,4 +1,5 @@
 include mixins/bemto
+include ../blocks/modal/modal
 
 doctype html
 
@@ -30,6 +31,8 @@ html(lang="ru")
 
             block content
 
+        +modal
+
         script(type="x-template", id="scheduleItem-template").
             <div class="scheduleItem">
                 <div class="scheduleItem__wrapper">
@@ -50,7 +53,8 @@ html(lang="ru")
                             <div class="scheduleItem__school"></div>
 
                             <div class="scheduleItem__author">
-                                <span class="scheduleItem__author__label">Лектор:</span> <a class="scheduleItem__author__link" href="#"></a>
+                                <ul class="scheduleItem__author__list"></ul>
+                                <span class="scheduleItem__author__label">Лектор:</span> <a class="scheduleItem__author__link modal_trigger" href="#author"></a>
                             </div>
 
                             <div class="scheduleItem__place">
