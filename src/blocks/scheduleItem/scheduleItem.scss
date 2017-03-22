@@ -136,4 +136,23 @@ $scheduleItem: '.scheduleItem';
             opacity: .5;
         }
     }
+
+    &__author__list {
+        @include clearfix;
+    }
+
+    &__author__list,
+    &__author__item {
+        @include list-reset;
+    }
+
+    &__author__item {
+        position: relative;
+        display: block;
+        margin-bottom: .3em;
+
+        @include f-last(1) {
+            margin-bottom: 0;
+        }
+    }
 }
