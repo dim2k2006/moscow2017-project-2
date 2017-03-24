@@ -66,7 +66,7 @@
             list.forEach(function(item) {
                 var element = document.createElement('li'),
                     schools = '',
-                    authors = '';
+                    authors = '',
                     date = new Date(item.date),
                     day = date.getDate(),
                     month = self.monthNames[date.getMonth()];
