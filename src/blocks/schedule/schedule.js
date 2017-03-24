@@ -68,7 +68,7 @@
                     schools = '',
                     authors = '';
                     date = new Date(item.date),
-                    day = date.getDate();
+                    day = date.getDate(),
                     month = self.monthNames[date.getMonth()];
 
                 element.classList.add('scheduleList__item');
