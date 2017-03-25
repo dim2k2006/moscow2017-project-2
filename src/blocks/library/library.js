@@ -711,23 +711,19 @@
          * Load data to local storage if it is empty
          */
         self.getData = function() {
-            self.initialScheduleList = self.data;
+            var localData = JSON.parse(localStorage.getItem('schedule'));
 
-            self.updateLocalStorage();
+            if (!localData) {
 
-            // var localData = JSON.parse(localStorage.getItem('schedule'));
-            //
-            // if (!localData) {
-            //
-            //     self.initialScheduleList = self.data;
-            //
-            //     self.updateLocalStorage();
-            //
-            // } else {
-            //
-            //     self.initialScheduleList = localData;
-            //
-            // }
+                self.initialScheduleList = self.data;
+
+                self.updateLocalStorage();
+
+            } else {
+
+                self.initialScheduleList = localData;
+
+            }
         };
 
         /**
