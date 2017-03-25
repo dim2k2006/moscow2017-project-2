@@ -10,7 +10,6 @@
     var Library = function () {
         var self = this;
 
-        self.container = document.querySelector('.library');
         self.initialScheduleList = '';
         self.data = {
             "lectures": [
@@ -731,30 +730,35 @@
             // }
         };
 
-        self.filter = function(options) {
-            var table = options.table,
-                dates = options.dates;
-
-            var result = self.initialScheduleList[options.table].filter(function(item) {
+        /**
+         * Get schedule at a given date range
+         * @param {String} dateFrom
+         * @param {String} dateTo
+         */
+        self.getSchedule = function(dateFrom, dateTo) {
+            var result = self.initialScheduleList.lectures.filter(function(item) {
                 var itemDate = new Date(item.date.day).getTime(),
-                    limitDateFrom = new Date(options.dates[0]).getTime(),
-                    limitDateTo = new Date(options.dates[1]).getTime();
+                    limitDateFrom = new Date(dateFrom).getTime() || 0,
+                    limitDateTo = new Date(dateTo).getTime() || Infinity;
 
                 return itemDate > limitDateFrom && itemDate < limitDateTo;
             });
 
-            console.log(result);
-            // self.render(result);
+            console.log(self.sort(result));
         };
 
+        /**
+         * Sort data
+         * @param {Array} data
+         * @returns {Array}
+         */
+        self.sort = function(data) {
+            return data.sort(function(a, b) {
+                var aDate = new Date(a.date.day).getTime(),
+                    bDate = new Date(b.date.day).getTime();
 
-
-
-
-
-
-        self.render = function(data) {
-
+                return aDate > bDate ? 1 : -1;
+            });
         };
 
         /**
@@ -777,16 +781,9 @@
          * Init module
          */
         self.init = function() {
-            // if (self.container) {
-
-                self.importDefaults();
-                self.getData();
-                self.filter({
-                    table: 'lectures',
-                    dates: ['2016/10/15', '2016/10/20']
-                });
-
-            // }
+            self.importDefaults();
+            self.getData();
+            // self.getSchedule('2016/10/15', '2016/10/20');
         };
     };
 
