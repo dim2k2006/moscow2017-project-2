@@ -699,7 +699,7 @@
                     "capacity": 40
                 },
                 {
-                    "id": "2",
+                    "id": 2,
                     "title": "ул. Льва Толстого, 16, аудитория 14",
                     "link": "https://maps.yandex.by/-/C6EciCja",
                     "capacity": 50
@@ -727,17 +727,30 @@
         };
 
         /**
-         * Get schedule at a given date range
+         * Get schedule at a given date range and place
          * @param {String} dateFrom
          * @param {String} dateTo
+         * @param {Number} placeId
          */
-        self.getSchedule = function(dateFrom, dateTo) {
+        self.getSchedule = function(dateFrom, dateTo, placeId) {
             var result = self.initialScheduleList.lectures.filter(function(item) {
                 var itemDate = new Date(item.date.day).getTime(),
                     limitDateFrom = new Date(dateFrom).getTime() || 0,
-                    limitDateTo = new Date(dateTo).getTime() || Infinity;
+                    limitDateTo = new Date(dateTo).getTime() || Infinity,
+                    result = false;
 
-                return itemDate > limitDateFrom && itemDate < limitDateTo;
+
+                if (typeof placeId === 'number') {
+
+                    result = itemDate >= limitDateFrom && itemDate <= limitDateTo && placeId === item.place;
+
+                } else {
+
+                    result = itemDate >= limitDateFrom && itemDate <= limitDateTo;
+
+                }
+
+                return result;
             });
 
             console.log(self.sort(result));
@@ -779,7 +792,7 @@
         self.init = function() {
             self.importDefaults();
             self.getData();
-            // self.getSchedule('2016/10/15', '2016/10/20');
+            self.getSchedule('2016/10/15', '2016/12/30', '');
         };
     };
 
