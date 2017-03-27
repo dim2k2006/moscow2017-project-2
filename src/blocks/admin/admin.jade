@@ -1,0 +1,35 @@
+mixin admin
+    +b('section').admin
+        +e('div').wrapper
+            +e('div').header
+                +e('div').title!= "Библиотека"
+
+            +e('div').content
+                +e('div').col(class="admin__col_aside")
+                    +e('div').aside
+                        +e('ul').aside__list
+                            +e('li').aside__item
+                                +e('a').aside__link(href="#schedule", class="admin__aside__link_state_active")!= "Расписание"
+
+                            +e('li').aside__item
+                                +e('a').aside__link(href="#lectures")!= "Лекции"
+
+                            +e('li').aside__item
+                                +e('a').aside__link(href="#schools")!= "Школы"
+
+                            +e('li').aside__item
+                                +e('a').aside__link(href="#audiences")!= "Аудитории"
+
+                +e('div').col(class="admin__col_main")
+                    +e('div').main
+                        +e('div').box(id="schedule", class="admin__box_state_active")
+                            != "Расписание"
+
+                        +e('div').box(id="lectures")
+                            != "Лекции"
+
+                        +e('div').box(id="schools")
+                            != "Школы"
+
+                        +e('div').box(id="audiences")
+                            != "Аудитории"

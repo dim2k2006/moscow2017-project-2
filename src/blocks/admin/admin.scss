@@ -1,0 +1,104 @@
+$admin: '.admin';
+
+#{$admin} {
+    position: relative;
+    display: block;
+    padding: 50px 15px;
+
+    &__wrapper {
+        position: relative;
+        display: block;
+        max-width: 960px;
+        margin: 0 auto;
+    }
+
+    &__header {
+        position: relative;
+        display: block;
+    }
+
+    &__title {
+        position: relative;
+        display: block;
+        margin-bottom: .8em;
+        font-size: $font-size-largeplus;
+        line-height: $line-height-prelittle;
+        color: $color-black;
+        text-align: center;
+    }
+
+    &__content {
+        position: relative;
+        display: block;
+        @include clearfix;
+    }
+
+    &__col {
+        position: relative;
+        display: block;
+
+        &#{$admin}__col_aside {
+            width: 250px;
+            float: left;
+        }
+
+        &#{$admin}__col_main {
+            width: calc(100% - 270px);
+            float: right;
+        }
+    }
+
+    &__aside {
+        position: relative;
+        display: block;
+        border: 1px solid $color-iron;
+    }
+
+    &__aside__list {
+        @include clearfix;
+    }
+
+    &__aside__list,
+    &__aside__item {
+        @include list-reset;
+    }
+
+    &__aside__item {
+        position: relative;
+        display: block;
+        border-bottom: 1px solid $color-iron;
+
+        @include f-last(1) {
+            border: none;
+        }
+    }
+
+    &__aside__link {
+        position: relative;
+        display: block;
+        padding: 15px 20px;
+        font-size: $font-size-premedium;
+        line-height: $line-height-prelittle;
+        color: $color-black;
+        @include transition(color);
+
+        &#{$admin}__aside__link_state_active {
+            color: $color-red;
+        }
+    }
+
+    &__main {
+        position: relative;
+        display: block;
+        border: 1px solid $color-iron;
+    }
+
+    &__box {
+        position: relative;
+        display: none;
+
+        &#{$admin}__box_state_active {
+            display: block;
+        }
+    }
+}
