@@ -96,6 +96,7 @@ $admin: '.admin';
     &__box {
         position: relative;
         display: none;
+        padding: 15px;
 
         &#{$admin}__box_state_active {
             display: block;

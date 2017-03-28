@@ -1,3 +1,5 @@
+include ../adminSchedule/adminSchedule
+
 mixin admin
     +b('section').admin
         +e('div').wrapper
@@ -23,7 +25,7 @@ mixin admin
                 +e('div').col(class="admin__col_main")
                     +e('div').main
                         +e('div').box(id="schedule", class="admin__box_state_active")
-                            != "Расписание"
+                            +adminSchedule
 
                         +e('div').box(id="lectures")
                             != "Лекции"

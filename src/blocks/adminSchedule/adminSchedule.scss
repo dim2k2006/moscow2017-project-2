@@ -1,0 +1,29 @@
+$adminSchedule: '.adminSchedule';
+
+#{$adminSchedule} {
+    position: relative;
+    display: block;
+
+    &__wrapper {
+        position: relative;
+        display: block;
+    }
+
+    &__header {
+        position: relative;
+        display: block;
+    }
+
+    &__filter {
+        position: relative;
+        display: block;
+        @include clearfix;
+    }
+
+    &__filter__item {
+        position: relative;
+        display: block;
+        float: left;
+        width: 33.333333333%;
+    }
+}
