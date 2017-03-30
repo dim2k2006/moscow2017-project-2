@@ -753,7 +753,55 @@
                 return result;
             });
 
-            console.log(self.sort(result));
+            return self.sort(self.expand(result));
+        };
+
+        /**
+         * Expand information according to id
+         * @param {Array} list
+         */
+        self.expand = function(list) {
+            return list.map(function(item) {
+                var schoolList = [],
+                    authorList = [],
+                    placeList = [];
+
+                item.school.forEach(function(schoolId) {
+                    var school = self.initialScheduleList.schools.filter(function(schoolItem) {
+                        return schoolItem.id === schoolId;
+                    });
+
+                    if (school.length > 0) {
+
+                        schoolList.push(school[0].title);
+
+                    }
+                });
+
+                item.author.forEach(function(authorId) {
+                    var author = self.initialScheduleList.authors.filter(function(authorItem) {
+                        return authorItem.id === authorId;
+                    });
+
+                    if (author.length > 0) {
+
+                        authorList.push(author[0].title);
+
+                    }
+                });
+
+                placeList = self.initialScheduleList.places.filter(function(placeItem) {
+                    return placeItem.id === item.place;
+                });
+
+                item.school = schoolList;
+
+                item.author = authorList;
+
+                item.place = placeList[0].title;
+
+                return item;
+            });
         };
 
         /**
@@ -792,7 +840,7 @@
         self.init = function() {
             self.importDefaults();
             self.getData();
-            self.getSchedule('2016/10/15', '2016/12/30', '');
+            // self.getSchedule('2016/10/15', '2016/12/30', '');
         };
     };
 

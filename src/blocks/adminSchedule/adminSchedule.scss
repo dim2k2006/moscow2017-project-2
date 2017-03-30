@@ -12,6 +12,7 @@ $adminSchedule: '.adminSchedule';
     &__header {
         position: relative;
         display: block;
+        margin-bottom: 20px;
     }
 
     &__filter {
@@ -25,5 +26,55 @@ $adminSchedule: '.adminSchedule';
         display: block;
         float: left;
         width: 33.333333333%;
+    }
+
+    &__content {
+        position: relative;
+        display: block;
+    }
+
+    &__list {
+        @include clearfix;
+    }
+
+    &__list,
+    &__item {
+        @include list-reset;
+    }
+
+    &__item {
+        position: relative;
+        display: block;
+        padding: 20px 0;
+        border-bottom: 1px solid $color-iron;
+
+        @include f-first(1) {
+            border-top: 1px solid $color-iron;
+        }
+
+        @include f-last(1) {
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+    }
+
+    &__box {
+        position: relative;
+        display: block;
+    }
+
+    &__name {
+        position: relative;
+        display: block;
+        margin-bottom: .2em;
+        font-size: $font-size-mediumplus;
+        line-height: $line-height-presmall;
+    }
+
+
+
+    &__footer {
+        position: relative;
+        display: none;
     }
 }
