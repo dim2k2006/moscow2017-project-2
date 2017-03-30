@@ -1,3 +1,4 @@
+include ../formInput/formInput
 include ../formSelect/formSelect
 
 mixin adminSchedule
@@ -6,10 +7,26 @@ mixin adminSchedule
             +e('div').header
                 +e('div').filter
                     +e('div').filter__item
-                        +e('input').filter__input(type="date", min="2016-01-01", max="2016-12-31", value="2016-10-01")
+                        +formInput({
+                            type: 'date',
+                            label: 'Начало',
+                            name: 'from',
+                            id: 'from',
+                            min: '2016-01-01',
+                            max: '2016-12-31',
+                            value: '2016-10-01'
+                        })
 
                     +e('div').filter__item
-                        +e('input').filter__input(type="date", min="2016-01-01", max="2016-12-31", value="2016-12-31")
+                        +formInput({
+                            type: 'date',
+                            label: 'Конец',
+                            name: 'to',
+                            id: 'to',
+                            min: '2016-01-01',
+                            max: '2016-12-31',
+                            value: '2016-12-31'
+                        })
 
                     +e('div').filter__item
                         +formSelect({
