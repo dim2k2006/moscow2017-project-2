@@ -752,7 +752,7 @@
                 return result;
             });
 
-            return self.sort(self.expand(result));
+            return self.sort(result);
         };
 
         /**
@@ -825,31 +825,6 @@
         };
 
         /**
-         * Expand information according to id
-         * @param {Array} list
-         */
-        self.expand = function(list) {
-            return list.map(function(item) {
-
-                item.school = item.school.map(function(requestedId) {
-                    var returnedItem = self.getSchool(requestedId);
-
-                    return returnedItem[0].title;
-                });
-
-                item.author = item.author.map(function(requestedId) {
-                    var returnedItem = self.getAuthor(requestedId);
-
-                    return returnedItem[0].title;
-                });
-
-                item.place = self.getPlace(item.place)[0].title;
-
-                return item;
-            });
-        };
-
-        /**
          * Sort data
          * @param {Array} data
          * @returns {Array}
@@ -885,7 +860,7 @@
         self.init = function() {
             self.importDefaults();
             self.getData();
-            // self.getSchedule('2016/10/15', '2016/12/30', '');
+            // console.log(self.getSchedule('2016/10/15', '2016/12/30', 2));
         };
     };
 

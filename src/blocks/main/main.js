@@ -15,6 +15,13 @@ var initApp = function() {
         self.modules = app.modules;
 
         /**
+         * Init library module
+         */
+        self.initLibrary = function() {
+            self.modules['library'].init();
+        };
+
+        /**
          * Init all modules in $.modules
          */
         self.initModules = function() {
@@ -22,7 +29,7 @@ var initApp = function() {
 
                 if (self.modules.hasOwnProperty(module)) {
 
-                    if (typeof self.modules[module].init !== 'undefined' && module !== 'main') {
+                    if (typeof self.modules[module].init !== 'undefined' && module !== 'main' && module !== 'library') {
 
                         self.modules[module].init();
 
@@ -37,6 +44,7 @@ var initApp = function() {
          * Init module
          */
         self.init = function() {
+            self.initLibrary();
             self.initModules();
         };
     };

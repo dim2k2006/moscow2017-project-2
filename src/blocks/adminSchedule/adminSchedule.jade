@@ -30,31 +30,10 @@ mixin adminSchedule
 
                     +e('div').filter__item
                         +formSelect({
-                            label: 'Школа',
-                            name: 'school',
-                            id: 'school',
-                            list: [
-                                {
-                                    text: '',
-                                    value: '',
-                                    isActive: false
-                                },
-                                {
-                                    text: 'value 1',
-                                    value: '1',
-                                    isActive: true
-                                },
-                                {
-                                    text: 'value 2',
-                                    value: '2',
-                                    isActive: false
-                                },
-                                {
-                                    text: 'value 3',
-                                    value: '3',
-                                    isActive: false
-                                }
-                            ]
+                            label: 'Место',
+                            name: 'place',
+                            id: 'place',
+                            list: []
                         })
 
             +e('div').content
