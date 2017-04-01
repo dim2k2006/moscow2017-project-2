@@ -56,21 +56,21 @@
                 contentItem.classList.add('adminSchedule__item');
                 contentItem.innerHTML = self.template;
 
-                contentItem.querySelector('.adminSchedule__name').innerHTML = item.title;
+                contentItem.querySelector('.adminSchedule__box__name').innerHTML = item.title;
 
-                contentItem.querySelector('.adminSchedule__school').innerHTML = item.school.join(', ');
+                contentItem.querySelector('.adminSchedule__box__school').innerHTML = item.school.join(', ');
 
-                contentItem.querySelector('.adminSchedule__author').innerHTML = item.author.join(', ');
+                contentItem.querySelector('.adminSchedule__box__author').innerHTML += item.author.join(', ');
 
-                contentItem.querySelector('.adminSchedule__date').innerHTML = item.date.day;
+                contentItem.querySelector('.adminSchedule__box__date').innerHTML += item.date.day;
 
-                contentItem.querySelector('.adminSchedule__time').innerHTML = item.date.time;
+                contentItem.querySelector('.adminSchedule__box__time').innerHTML += item.date.time;
 
-                contentItem.querySelector('.adminSchedule__place').innerHTML = item.place;
+                contentItem.querySelector('.adminSchedule__box__place').innerHTML += item.place;
 
-                contentItem.querySelector('.adminSchedule__status').innerHTML = item.isOver;
+                contentItem.querySelector('.adminSchedule__box__status').innerHTML += item.isOver ? 'Лекция закончилась' : 'Лекция еще не закончилась';
 
-                contentItem.querySelector('.adminSchedule__resources').innerHTML = item.resources;
+                contentItem.querySelector('.adminSchedule__box__resources a').href = item.resources;
 
                 contentList.appendChild(contentItem);
             });

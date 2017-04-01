@@ -63,23 +63,25 @@ mixin adminSchedule
             +e('div').footer
                 script(type="x-template", id="adminSchedule-template").
                     <div class="adminSchedule__box">
-                        <div class="adminSchedule__name"></div>
+                        <div class="adminSchedule__box__header">
+                            <div class="adminSchedule__box__name"></div>
 
-                        <div class="adminSchedule__school"></div>
+                            <div class="adminSchedule__box__school"></div>
 
-                        <div class="adminSchedule__author"></div>
+                            <div class="adminSchedule__box__author">Лектор: </div>
+                        </div>
 
-                        <div class="adminSchedule__date"></div>
+                        <div class="adminSchedule__box__content">
+                            <div class="adminSchedule__box__date">Дата: </div>
 
-                        <div class="adminSchedule__time"></div>
+                            <div class="adminSchedule__box__time">Время: </div>
 
-                        <div class="adminSchedule__place"></div>
+                            <div class="adminSchedule__box__place">Место: </div>
+                        </div>
 
-                        <div class="adminSchedule__status"></div>
+                        <div class="adminSchedule__box__footer">
+                            <div class="adminSchedule__box__status">Статус: </div>
 
-                        <div class="adminSchedule__resources"></div>
+                            <div class="adminSchedule__box__resources"><a href="">Ссылка на материалы</a></div>
+                        </div>
                     </div>
-
-            //+e('ul').list
-            //    +e('li').item
-

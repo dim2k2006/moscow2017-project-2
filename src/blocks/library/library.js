@@ -16,7 +16,7 @@
                 {
                     "id": 0,
                     "title": "Лекция 1. Адаптивная вёрстка",
-                    "school": [0],
+                    "school": [0, 1],
                     "author": [1],
                     "date": {
                         "day": "2016/10/20",
@@ -739,7 +739,6 @@
                     limitDateTo = new Date(dateTo).getTime() || Infinity,
                     result = false;
 
-
                 if (typeof placeId === 'number') {
 
                     result = itemDate >= limitDateFrom && itemDate <= limitDateTo && placeId === item.place;
@@ -757,48 +756,94 @@
         };
 
         /**
+         * Get school by id. If id not defined then return all schools
+         * @param {Number} id
+         * @returns {Array}
+         */
+        self.getSchool = function(id) {
+            var result = [];
+
+            if (typeof id === 'number') {
+
+                result = self.initialScheduleList.schools.filter(function(item) {
+                    return item.id === id;
+                });
+
+            } else {
+
+                result = self.initialScheduleList.schools.slice();
+
+            }
+
+            return result.length > 0 ? result : [{title: 'Школа с идентификатором ' + id + 'не найдена'}];
+        };
+
+        /**
+         * Get author by id. If id not defined then return all authors
+         * @param {Number} id
+         * @returns {Array}
+         */
+        self.getAuthor = function(id) {
+            var result = [];
+
+            if (typeof id === 'number') {
+
+                result = self.initialScheduleList.authors.filter(function(item) {
+                    return item.id === id;
+                });
+
+            } else {
+
+                result = self.initialScheduleList.authors.slice();
+
+            }
+
+            return result.length > 0 ? result : [{title: 'Лектор с идентификатором ' + id + 'не найден'}];
+        };
+
+        /**
+         * Get place by id. If id not defined then return all places
+         * @param {Number} id
+         * @returns {Array}
+         */
+        self.getPlace = function(id) {
+            var result = [];
+
+            if (typeof id === 'number') {
+
+                result = self.initialScheduleList.places.filter(function(item) {
+                    return item.id === id;
+                });
+
+            } else {
+
+                result = self.initialScheduleList.places.slice();
+
+            }
+
+            return result.length > 0 ? result : [{title: 'Место с идентификатором ' + id + 'не найдено'}];
+        };
+
+        /**
          * Expand information according to id
          * @param {Array} list
          */
         self.expand = function(list) {
             return list.map(function(item) {
-                var schoolList = [],
-                    authorList = [],
-                    placeList = [];
 
-                item.school.forEach(function(schoolId) {
-                    var school = self.initialScheduleList.schools.filter(function(schoolItem) {
-                        return schoolItem.id === schoolId;
-                    });
+                item.school = item.school.map(function(requestedId) {
+                    var returnedItem = self.getSchool(requestedId);
 
-                    if (school.length > 0) {
-
-                        schoolList.push(school[0].title);
-
-                    }
+                    return returnedItem[0].title;
                 });
 
-                item.author.forEach(function(authorId) {
-                    var author = self.initialScheduleList.authors.filter(function(authorItem) {
-                        return authorItem.id === authorId;
-                    });
+                item.author = item.author.map(function(requestedId) {
+                    var returnedItem = self.getAuthor(requestedId);
 
-                    if (author.length > 0) {
-
-                        authorList.push(author[0].title);
-
-                    }
+                    return returnedItem[0].title;
                 });
 
-                placeList = self.initialScheduleList.places.filter(function(placeItem) {
-                    return placeItem.id === item.place;
-                });
-
-                item.school = schoolList;
-
-                item.author = authorList;
-
-                item.place = placeList[0].title;
+                item.place = self.getPlace(item.place)[0].title;
 
                 return item;
             });
@@ -811,8 +856,8 @@
          */
         self.sort = function(data) {
             return data.sort(function(a, b) {
-                var aDate = new Date(a.date.day).getTime(),
-                    bDate = new Date(b.date.day).getTime();
+                var aDate = new Date(a.date.day + ' ' + a.date.time).getTime(),
+                    bDate = new Date(b.date.day + ' ' + b.date.time).getTime();
 
                 return aDate > bDate ? 1 : -1;
             });

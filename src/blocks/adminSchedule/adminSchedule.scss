@@ -63,7 +63,28 @@ $adminSchedule: '.adminSchedule';
         display: block;
     }
 
-    &__name {
+    &__box__header {
+        position: relative;
+        display: block;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px dotted rgba($color-iron, 1);
+    }
+
+    &__box__content {
+        position: relative;
+        display: block;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px dotted rgba($color-iron, 1);
+    }
+
+    &__box__footer {
+        position: relative;
+        display: block;
+    }
+
+    &__box__name {
         position: relative;
         display: block;
         margin-bottom: .2em;
@@ -71,7 +92,47 @@ $adminSchedule: '.adminSchedule';
         line-height: $line-height-presmall;
     }
 
+    &__box__school {
+        position: relative;
+        display: block;
+        margin-bottom: .4em;
+        font-size: $font-size-predefault;
+        line-height: $line-height-presmall;
+    }
 
+    &__box__author {
+        position: relative;
+        display: block;
+    }
+
+    &__box__date {
+        position: relative;
+        display: block;
+    }
+
+    &__box__time {
+        position: relative;
+        display: block;
+    }
+
+    &__box__place {
+        position: relative;
+        display: block;
+    }
+
+    &__box__status {
+        position: relative;
+        display: block;
+    }
+
+    &__box__resources {
+        position: relative;
+        display: block;
+
+        a {
+            text-decoration: underline;
+        }
+    }
 
     &__footer {
         position: relative;
