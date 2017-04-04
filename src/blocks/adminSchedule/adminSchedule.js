@@ -15,6 +15,8 @@
         self.getPlace = '';
         self.getSchool = '';
         self.getAuthor = '';
+        self.select = '';
+        self.expand = '';
         self.container = document.querySelector('.adminSchedule');
         self.content = self.container.querySelector('.adminSchedule__content');
         self.dateFromInput = self.container.querySelector('.formInput__input[name="from"]');
@@ -33,14 +35,15 @@
          * Setup place filter values
          */
         self.setupPlaceFilter = function() {
-            var result = self.getPlace(),
-                html = '<option value=""></option>';
+            self.getPlace().then(function(response) {
+                var html = '<option value=""></option>';
 
-            result.forEach(function(item) {
-                html += '<option value="'+ item.id +'">'+ item.title +'</option>';
+                response.forEach(function(item) {
+                    html += '<option value="'+ item.id +'">'+ item.title +'</option>';
+                });
+
+                self.placeSelect.innerHTML = html;
             });
-
-            self.placeSelect.innerHTML = html;
         };
 
         /**
@@ -51,49 +54,37 @@
                 dateTo = self.dateToInput.value.replace(/-/g, '/'),
                 place = self.placeSelect.value ? parseInt(self.placeSelect.value) : '';
 
-            self.render(self.getSchedule(dateFrom, dateTo, place));
+            self.getSchedule(dateFrom, dateTo, place).then(function(response) {
+                self.render(response);
+            });
         };
 
         /**
          * Render schedule list
-         * @param {Array} list
+         * @param {Object} response
          */
-        self.render = function(list) {
+        self.render = function(response) {
             var contentList = document.createElement('ul');
 
             contentList.classList.add('adminSchedule__list');
 
-            list.forEach(function(item) {
+            response.lectures.forEach(function(item) {
                 var contentItem = document.createElement('li');
 
                 contentItem.classList.add('adminSchedule__item');
                 contentItem.innerHTML = self.template;
 
-                var school = item.school.map(function(requestedId) {
-                    var returnedItem = self.getSchool(requestedId);
-
-                    return returnedItem[0].title;
-                });
-
-                var author = item.author.map(function(requestedId) {
-                    var returnedItem = self.getAuthor(requestedId);
-
-                    return returnedItem[0].title;
-                });
-
-                var place = self.getPlace(item.place)[0].title;
-
                 contentItem.querySelector('.adminSchedule__box__name').innerHTML = item.title;
 
-                contentItem.querySelector('.adminSchedule__box__school').innerHTML = school.join(', ');
+                contentItem.querySelector('.adminSchedule__box__school').innerHTML = self.expand(item.school, response.schools);
 
-                contentItem.querySelector('.adminSchedule__box__author').innerHTML += author.join(', ');
+                contentItem.querySelector('.adminSchedule__box__author').innerHTML += self.expand(item.author, response.authors);
 
                 contentItem.querySelector('.adminSchedule__box__date').innerHTML += item.date.day;
 
                 contentItem.querySelector('.adminSchedule__box__time').innerHTML += item.date.time;
 
-                contentItem.querySelector('.adminSchedule__box__place').innerHTML += place;
+                contentItem.querySelector('.adminSchedule__box__place').innerHTML += self.expand([item.place], response.places);
 
                 contentItem.querySelector('.adminSchedule__box__status').innerHTML += item.isOver ? 'Лекция закончилась' : 'Лекция еще не закончилась';
 
@@ -116,6 +107,8 @@
             self.getPlace = app.modules.library.getPlace;
             self.getSchool = app.modules.library.getSchool;
             self.getAuthor = app.modules.library.getAuthor;
+            self.select = app.modules.library.select;
+            self.expand = app.modules.library.expand;
         };
 
         /**

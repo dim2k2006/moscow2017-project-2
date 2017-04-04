@@ -10,7 +10,6 @@
     var Library = function () {
         var self = this;
 
-        self.initialScheduleList = '';
         self.data = {
             "lectures": [
                 {
@@ -708,20 +707,14 @@
         };
 
         /**
-         * Load data to local storage if it is empty
+         * Load data to local storage if it is empty. For demo purpose only
          */
-        self.getData = function() {
+        self.loadData = function() {
             var localData = JSON.parse(localStorage.getItem('schedule'));
 
             if (!localData) {
 
-                self.initialScheduleList = self.data;
-
                 self.updateLocalStorage();
-
-            } else {
-
-                self.initialScheduleList = localData;
 
             }
         };
@@ -733,26 +726,30 @@
          * @param {Number} placeId
          */
         self.getSchedule = function(dateFrom, dateTo, placeId) {
-            var result = self.initialScheduleList.lectures.filter(function(item) {
-                var itemDate = new Date(item.date.day).getTime(),
-                    limitDateFrom = new Date(dateFrom).getTime() || 0,
-                    limitDateTo = new Date(dateTo).getTime() || Infinity,
-                    result = false;
+            return new Promise(function(resolve, reject) {
+                self.select(['lectures', 'schools', 'authors', 'places']).then(function(response) {
+                    response.lectures = self.sort(response.lectures.filter(function(item) {
+                        var itemDate = new Date(item.date.day).getTime(),
+                            limitDateFrom = new Date(dateFrom).getTime() || 0,
+                            limitDateTo = new Date(dateTo).getTime() || Infinity,
+                            result = false;
 
-                if (typeof placeId === 'number') {
+                        if (typeof placeId === 'number') {
 
-                    result = itemDate >= limitDateFrom && itemDate <= limitDateTo && placeId === item.place;
+                            result = itemDate >= limitDateFrom && itemDate <= limitDateTo && placeId === item.place;
 
-                } else {
+                        } else {
 
-                    result = itemDate >= limitDateFrom && itemDate <= limitDateTo;
+                            result = itemDate >= limitDateFrom && itemDate <= limitDateTo;
 
-                }
+                        }
 
-                return result;
+                        return result;
+                    }));
+
+                    resolve(response);
+                });
             });
-
-            return self.sort(result);
         };
 
         /**
@@ -761,21 +758,25 @@
          * @returns {Array}
          */
         self.getSchool = function(id) {
-            var result = [];
+            return new Promise(function(resolve, reject) {
+                self.select(['schools']).then(function(response) {
+                    var result = [];
 
-            if (typeof id === 'number') {
+                    if (typeof id === 'number') {
 
-                result = self.initialScheduleList.schools.filter(function(item) {
-                    return item.id === id;
-                });
+                        result = response.schools.filter(function(item) {
+                            return item.id === id;
+                        });
 
-            } else {
+                    } else {
 
-                result = self.initialScheduleList.schools.slice();
+                        result = response.schools.slice();
 
-            }
+                    }
 
-            return result.length > 0 ? result : [{title: 'Школа с идентификатором ' + id + 'не найдена'}];
+                    resolve(result.length > 0 ? result : [{title: 'Школа с идентификатором ' + id + 'не найдена'}]);
+                })
+            });
         };
 
         /**
@@ -784,21 +785,25 @@
          * @returns {Array}
          */
         self.getAuthor = function(id) {
-            var result = [];
+            return new Promise(function(resolve, reject) {
+                self.select(['authors']).then(function (response) {
+                    var result = [];
 
-            if (typeof id === 'number') {
+                    if (typeof id === 'number') {
 
-                result = self.initialScheduleList.authors.filter(function(item) {
-                    return item.id === id;
+                        result = response.authors.filter(function(item) {
+                            return item.id === id;
+                        });
+
+                    } else {
+
+                        result = response.authors.slice();
+
+                    }
+
+                    resolve(result.length > 0 ? result : [{title: 'Лектор с идентификатором ' + id + 'не найден'}]);
                 });
-
-            } else {
-
-                result = self.initialScheduleList.authors.slice();
-
-            }
-
-            return result.length > 0 ? result : [{title: 'Лектор с идентификатором ' + id + 'не найден'}];
+            });
         };
 
         /**
@@ -807,21 +812,25 @@
          * @returns {Array}
          */
         self.getPlace = function(id) {
-            var result = [];
+            return new Promise(function(resolve, reject) {
+                self.select(['places']).then(function (response) {
+                    var result = [];
 
-            if (typeof id === 'number') {
+                    if (typeof id === 'number') {
 
-                result = self.initialScheduleList.places.filter(function(item) {
-                    return item.id === id;
+                        result = response.places.filter(function(item) {
+                            return item.id === id;
+                        });
+
+                    } else {
+
+                        result = response.places.slice();
+
+                    }
+
+                    resolve(result.length > 0 ? result : [{title: 'Место с идентификатором ' + id + 'не найдено'}]);
                 });
-
-            } else {
-
-                result = self.initialScheduleList.places.slice();
-
-            }
-
-            return result.length > 0 ? result : [{title: 'Место с идентификатором ' + id + 'не найдено'}];
+            });
         };
 
         /**
@@ -839,10 +848,95 @@
         };
 
         /**
+         * Expand array of id into string
+         * @param {Array} list of id
+         * @param {Object} table for filtering
+         * @returns {string} result string
+         */
+        self.expand = function(list, table) {
+            return list.map(function(requestedId) {
+                return table.filter(function(item) {
+                    return item.id === requestedId;
+                })[0].title;
+            }).join(', ');
+        };
+
+        /**
+         * Select data from database
+         * @param {Array} tables
+         */
+        self.select = function(tables) {
+            return new Promise(function(resolve, reject) {
+                self.query().then(function(response) {
+                    var result = {};
+
+                    tables.forEach(function(table) {
+                        if (response.hasOwnProperty(table)) {
+
+                            result[table] = response[table];
+
+                        } else {
+
+                            throw new Error('Не удалось получить данные для таблицы ' + table);
+
+                        }
+                    });
+
+                    resolve(result);
+                });
+            });
+        };
+
+        /**
+         * Update data in database
+         */
+        self.update = function() {
+
+        };
+
+        /**
+         * Insert data in database
+         */
+        self.insert = function() {
+
+        };
+
+        /**
+         * Delete data from database
+         */
+        self.delete = function() {
+
+        };
+
+        // TODO нужно всегда лазить в базу за данными, так как базой могут пользоваться несколько людей, и данные могут изменяться.
+        // TODO в данном случае нужно сделать универсальный метод с промисом который будет возвращать с резолвом объект данных.
+        // TODO использовать данный метод во всех методах которые работают с базой
+
+        /**
+         * Get data from local storage (database)
+         * @returns {Promise}
+         */
+        self.query = function() {
+            return new Promise(function(resolve, reject) {
+                var data = JSON.parse(localStorage.getItem('schedule'));
+
+                if (data) {
+
+                    resolve(data);
+
+                } else {
+
+                    reject(new Error('Не удалось получить данные'));
+
+                }
+            });
+        };
+
+        /**
          * Update local storage
          */
         self.updateLocalStorage = function() {
-            var schedule = JSON.stringify(self.initialScheduleList);
+            var schedule = JSON.stringify(self.data);
 
             localStorage.setItem('schedule', schedule);
         };
@@ -859,8 +953,8 @@
          */
         self.init = function() {
             self.importDefaults();
-            self.getData();
-            // console.log(self.getSchedule('2016/10/15', '2016/12/30', 2));
+            self.loadData();
+            // self.getSchedule('2016/10/15', '2016/12/30', 2).then(function(response) {console.log(response)});
         };
     };
 
