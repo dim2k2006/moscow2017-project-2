@@ -13,12 +13,13 @@ var initApp = function() {
         self.html = document.querySelector('html');
         self.body = document.querySelector('body');
         self.modules = app.modules;
+        self.library = new Library();
 
         /**
          * Init library module
          */
         self.initLibrary = function() {
-            self.modules['library'].init();
+            self.library.init();
         };
 
         /**

@@ -28,7 +28,9 @@
          * Add event listeners
          */
         self.setupListener = function() {
-
+            self.dateFromInput.addEventListener('change', self.getData);
+            self.dateToInput.addEventListener('change', self.getData);
+            self.placeSelect.addEventListener('change', self.getData);
         };
 
         /**
@@ -103,12 +105,12 @@
          */
         self.importDefaults = function() {
             self.body = app.modules.main.body;
-            self.getSchedule = app.modules.library.getSchedule;
-            self.getPlace = app.modules.library.getPlace;
-            self.getSchool = app.modules.library.getSchool;
-            self.getAuthor = app.modules.library.getAuthor;
-            self.select = app.modules.library.select;
-            self.expand = app.modules.library.expand;
+            self.getSchedule = app.modules.main.library.getSchedule;
+            self.getPlace = app.modules.main.library.getPlace;
+            self.getSchool = app.modules.main.library.getSchool;
+            self.getAuthor = app.modules.main.library.getAuthor;
+            self.select = app.modules.main.library.select;
+            self.expand = app.modules.main.library.expand;
         };
 
         /**
@@ -119,6 +121,7 @@
 
                 self.importDefaults();
                 self.setupPlaceFilter();
+                self.getData();
                 self.setupListener();
 
             }
