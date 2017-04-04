@@ -15,7 +15,6 @@
         self.getPlace = '';
         self.getSchool = '';
         self.getAuthor = '';
-        self.select = '';
         self.expand = '';
         self.container = document.querySelector('.adminSchedule');
         self.content = self.container.querySelector('.adminSchedule__content');
@@ -109,7 +108,6 @@
             self.getPlace = app.modules.main.library.getPlace;
             self.getSchool = app.modules.main.library.getSchool;
             self.getAuthor = app.modules.main.library.getAuthor;
-            self.select = app.modules.main.library.select;
             self.expand = app.modules.main.library.expand;
         };
 

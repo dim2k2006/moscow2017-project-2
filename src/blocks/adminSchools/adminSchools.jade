@@ -1,0 +1,72 @@
+include ../formInput/formInput
+include ../formSelect/formSelect
+
+mixin adminSchools
+    +b('div').adminSchools
+        +e('div').wrapper
+            +e('div').header
+                +e('div').filter
+                    +e('div').filter__item
+                        +formSelect({
+                            label: 'Школа',
+                            name: 'school',
+                            id: 'school',
+                            list: []
+                        })
+
+            +e('div').content
+
+
+            +e('div').footer
+                script(type="x-template", id="adminSchools-edit-template").
+                    <div class="adminSchools__box">
+                        <div class="adminSchools__box__content">
+                            <div class="adminSchools__box__col adminSchools__box__col_1">
+                                <div class="formInput">
+                                    <div class="formInput__wrapper">
+                                        <div class="formInput__header">
+                                            <label for="id" class="formInput__label">Id</label>
+                                        </div>
+
+                                        <div class="formInput__content">
+                                            <input type="text" name="id" id="id" value="" class="formInput__input">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="adminSchools__box__col adminSchools__box__col_2">
+                                <div class="formInput">
+                                    <div class="formInput__wrapper">
+                                        <div class="formInput__header">
+                                            <label for="title" class="formInput__label">Название</label>
+                                        </div>
+
+                                        <div class="formInput__content">
+                                            <input type="text" name="title" id="title" value="" class="formInput__input">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="adminSchools__box__col adminSchools__box__col_3">
+                                <div class="formInput">
+                                    <div class="formInput__wrapper">
+                                        <div class="formInput__header">
+                                            <label for="student" class="formInput__label">Количество учеников</label>
+                                        </div>
+
+                                        <div class="formInput__content">
+                                            <input type="text" name="student" id="student" value="" class="formInput__input">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="adminSchools__box__footer">
+                            <a href="#" class="adminSchools__box__button">Редактировать</a>
+
+                            <a href="#" class="adminSchools__box__button">Удалить</a>
+                        </div>
+                    </div>

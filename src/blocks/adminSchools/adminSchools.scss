@@ -1,0 +1,60 @@
+$adminSchools: '.adminSchools';
+
+#{$adminSchools} {
+    position: relative;
+    display: block;
+
+    &__wrapper {
+        position: relative;
+        display: block;
+    }
+
+    &__header {
+        position: relative;
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    &__filter {
+        position: relative;
+        display: block;
+        @include clearfix;
+    }
+
+    &__filter__item {
+        position: relative;
+        display: block;
+    }
+
+    &__content {
+        position: relative;
+        display: block;
+    }
+
+    &__box {
+        position: relative;
+        display: block;
+    }
+
+    &__box__content {
+        position: relative;
+        display: block;
+        @include clearfix;
+    }
+
+    &__box__col {
+        position: relative;
+        display: block;
+        margin-bottom: 15px;
+    }
+
+    &__box__footer {
+        position: relative;
+        display: block;
+    }
+
+    &__footer {
+        position: relative;
+        display: none;
+    }
+}
