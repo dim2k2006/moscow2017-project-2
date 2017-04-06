@@ -49,6 +49,11 @@
     border-radius: 0;
     background-color: $color-white;
     border: 1px solid $color-iron;
+
+    &:disabled {
+        opacity: .5;
+        cursor: not-allowed;
+    }
 }
 
 // textareaDefault

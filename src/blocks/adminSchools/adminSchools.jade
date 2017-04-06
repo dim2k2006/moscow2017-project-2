@@ -5,10 +5,12 @@ mixin adminSchools
     +b('div').adminSchools
         +e('div').wrapper
             +e('div').header
+                +e('div').title!= "Выберите школу для редактирования"
+
                 +e('div').filter
                     +e('div').filter__item
                         +formSelect({
-                            label: 'Школа',
+                            label: 'Выберите школу',
                             name: 'school',
                             id: 'school',
                             list: []
@@ -18,8 +20,12 @@ mixin adminSchools
 
 
             +e('div').footer
-                script(type="x-template", id="adminSchools-edit-template").
+                script(type="x-template", id="adminSchools-template").
                     <div class="adminSchools__box">
+                        <div class="adminSchools__box__header">
+                            <div class="adminSchools__title">Или добавьте новую школу</div>
+                        </div>
+
                         <div class="adminSchools__box__content">
                             <div class="adminSchools__box__col adminSchools__box__col_1">
                                 <div class="formInput">
@@ -65,8 +71,10 @@ mixin adminSchools
                         </div>
 
                         <div class="adminSchools__box__footer">
-                            <a href="#" class="adminSchools__box__button">Редактировать</a>
+                            <a href="#" class="adminSchools__box__button adminSchools__box__button_type_edit" title="Изменить данные о школе" data-action="edit">Изменить</a>
 
-                            <a href="#" class="adminSchools__box__button">Удалить</a>
+                            <a href="#" class="adminSchools__box__button adminSchools__box__button_type_delete" title="Удалить школу" data-action="delete">Удалить</a>
+
+                            <a href="#" class="adminSchools__box__button adminSchools__box__button_type_add" title="Добавить школу" data-action="add">Добавить</a>
                         </div>
                     </div>

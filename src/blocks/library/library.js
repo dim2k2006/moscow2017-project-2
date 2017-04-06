@@ -5,6 +5,13 @@
 var Library = function () {
     var self = this;
 
+    self.dataType = {
+        schools: {
+            id: 'number',
+            title: 'string',
+            student: 'number'
+        }
+    };
     self.data = {
         "lectures": [
             {
@@ -709,7 +716,7 @@ var Library = function () {
 
         if (!localData) {
 
-            self.updateLocalStorage();
+            self.updateLocalStorage(self.data);
 
         }
     };
@@ -891,9 +898,49 @@ var Library = function () {
 
     /**
      * Insert data in database
+     * @param {String} table
+     * @param {Object} data
      */
-    self.insert = function() {
+    self.insert = function(table, data) {
+        return new Promise(function(resolve, reject) {
+            self.query().then(function(response) {
+                if (response.hasOwnProperty(table) && self.dataType[table]) {
 
+                    for (var field in self.dataType[table]) {
+
+                        if (self.dataType[table].hasOwnProperty(field) && data.hasOwnProperty(field)) {
+
+                            if (!data[field] || data[field].length === 0 || typeof data[field] !== self.dataType[table][field]) {
+
+                                reject('Указан некорректный тип данных для поля ' + field + ' в таблице ' + table);
+
+                                return false;
+
+                            }
+
+                        } else {
+
+                            reject('Указано некорректное поле для таблицы ' + table);
+
+                            return false;
+
+                        }
+
+                    }
+
+                    response[table].push(data);
+
+                    self.updateLocalStorage(response);
+
+                    resolve('Данные добавлены в таблицу ' + table);
+
+                } else {
+
+                    reject('Не удалось получить данные для таблицы ' + table);
+
+                }
+            });
+        });
     };
 
     /**
@@ -925,11 +972,12 @@ var Library = function () {
 
     /**
      * Update local storage
+     * @param {Object} data
      */
-    self.updateLocalStorage = function() {
-        var schedule = JSON.stringify(self.data);
+    self.updateLocalStorage = function(data) {
+        var data = JSON.stringify(data);
 
-        localStorage.setItem('schedule', schedule);
+        localStorage.setItem('schedule', data);
     };
 
     /**

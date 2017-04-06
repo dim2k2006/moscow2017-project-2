@@ -15,6 +15,15 @@ $adminSchools: '.adminSchools';
         margin-bottom: 20px;
     }
 
+    &__title {
+        position: relative;
+        display: block;
+        margin-bottom: .6em;
+        font-weight: 600;
+        font-size: $font-size-medium;
+        line-height: $line-height-small;
+    }
+
     &__filter {
         position: relative;
         display: block;
@@ -39,6 +48,9 @@ $adminSchools: '.adminSchools';
     &__box__content {
         position: relative;
         display: block;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        border-top: 1px dotted $color-iron;
         @include clearfix;
     }
 
@@ -51,6 +63,56 @@ $adminSchools: '.adminSchools';
     &__box__footer {
         position: relative;
         display: block;
+        font-size: 0;
+        text-align: center;
+    }
+
+    &__box__button {
+        position: relative;
+        display: inline-block;
+        vertical-align: middle;
+        min-width: 100px;
+        margin: 0 15px;
+        padding: 10px 15px;
+        font-size: $font-size-small;
+        line-height: $line-height-prelittle;
+        color: $color-white;
+        text-align: center;
+        background-color: $color-iron;
+        border-radius: 3px;
+        border-bottom: 1px solid transparent;
+        @include transition(background-color);
+
+        &:hover {
+            color: $color-white;
+        }
+
+        &#{$adminSchools}__box__button_type_edit {
+            border-color: darken($color-dodger-blue, 10%);
+            background-color: $color-dodger-blue;
+
+            &:hover {
+                background-color: lighten($color-dodger-blue, 10%);
+            }
+        }
+
+        &#{$adminSchools}__box__button_type_delete {
+            border-color: darken($color-pomegranate, 10%);
+            background-color: $color-pomegranate;
+
+            &:hover {
+                background-color: lighten($color-pomegranate, 10%);
+            }
+        }
+
+        &#{$adminSchools}__box__button_type_add {
+            border-color: darken($color-shamrock, 10%);
+            background-color: $color-shamrock;
+
+            &:hover {
+                background-color: lighten($color-shamrock, 10%);
+            }
+        }
     }
 
     &__footer {
