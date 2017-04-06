@@ -72,10 +72,25 @@
         };
 
         /**
-         * Delete item from database
+         * Remove item from database
          */
-        self.delete = function() {
-            console.log('delete');
+        self.remove = function() {
+            if (confirm('Вы действительно хотите удалить выбранную школу?')) {
+
+                self.delete('schools', {
+                    id: parseInt(self.container.querySelector('.formInput__input[name="id"]').value),
+                    title: self.container.querySelector('.formInput__input[name="title"]').value,
+                    student: parseInt(self.container.querySelector('.formInput__input[name="student"]').value)
+                }).then(function(response) {
+                    alert(response);
+
+                    self.setupSchoolFilter();
+                    self.setNewState();
+                }, function(response) {
+                    alert(response);
+                });
+
+            }
         };
 
         /**
@@ -154,7 +169,7 @@
 
                 box.querySelector('.adminSchools__box__button_type_edit').style.display = 'none';
 
-                box.querySelector('.adminSchools__box__button_type_delete').style.display = 'none';
+                box.querySelector('.adminSchools__box__button_type_remove').style.display = 'none';
 
                 self.render(box);
             });
@@ -176,6 +191,7 @@
             self.body = app.modules.main.body;
             self.getSchool = app.modules.main.library.getSchool;
             self.insert = app.modules.main.library.insert;
+            self.delete = app.modules.main.library.delete;
         };
 
         /**

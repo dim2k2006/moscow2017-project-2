@@ -946,8 +946,34 @@ var Library = function () {
     /**
      * Delete data from database
      */
-    self.delete = function() {
+    self.delete = function(table, data) {
+        return new Promise(function(resolve, reject) {
+            self.query().then(function (response) {
+                if (response.hasOwnProperty(table) && self.dataType[table]) {
 
+                    var prevLength = response[table].length,
+                        nextLength = 0;
+
+                    response[table] = response[table].filter(function(item) {
+                        return item.id !== data.id;
+                    });
+
+                    nextLength = response[table].length;
+
+                    if (nextLength < prevLength) {
+
+                        self.updateLocalStorage(response);
+
+                        resolve('Данные успешно удалены из таблицы ' + table);
+
+                    } else {
+
+                        reject('Не удалось найти данные с id ' + data.id + ' в таблице ' + table);
+
+                    }
+                }
+            });
+        });
     };
 
     /**

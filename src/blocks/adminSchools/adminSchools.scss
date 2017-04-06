@@ -96,7 +96,7 @@ $adminSchools: '.adminSchools';
             }
         }
 
-        &#{$adminSchools}__box__button_type_delete {
+        &#{$adminSchools}__box__button_type_remove {
             border-color: darken($color-pomegranate, 10%);
             background-color: $color-pomegranate;
 
