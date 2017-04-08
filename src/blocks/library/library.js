@@ -776,7 +776,7 @@ var Library = function () {
 
                 }
 
-                resolve(result.length > 0 ? result : [{title: 'Школа с идентификатором ' + id + 'не найдена'}]);
+                resolve(result);
             })
         });
     };
@@ -852,17 +852,17 @@ var Library = function () {
     /**
      * Expand array of id into string
      * @param {Array} list of id
-     * @param {Array} table for filtering
+     * @param {Object} table data for filtering
      * @returns {string} result string
      */
     self.expand = function(list, table) {
         var resultList = [];
 
-        if (list.length > 0 && table.length > 0) {
+        if (list.length > 0 && table.data.length > 0) {
 
             resultList = list.map(function(requestedId) {
 
-                var resultItem = table.filter(function(item) {
+                var resultItem = table.data.filter(function(item) {
                     return item.id === requestedId;
                 });
 
@@ -872,7 +872,7 @@ var Library = function () {
 
                 } catch(error) {
 
-                    console.log('Ошибка ' + error.name + ":" + error.message + "\n" + error.stack);
+                    console.log('Запрашиваемый элемент с id = ' + requestedId + ' не найден таблице '+ table.title +'. ' + '\n' + error.name + ': ' + error.message + '\n' + error.stack);
 
                     return '';
 
@@ -932,7 +932,7 @@ var Library = function () {
 
                         if (self.dataType[table].hasOwnProperty(field) && data.hasOwnProperty(field)) {
 
-                            if (!data[field] || data[field].length === 0 || typeof data[field] !== self.dataType[table][field]) {
+                            if (data[field].length === 0 || typeof data[field] !== self.dataType[table][field]) {
 
                                 reject('Указан некорректный тип данных для поля ' + field + ' в таблице ' + table);
 

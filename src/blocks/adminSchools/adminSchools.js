@@ -157,7 +157,7 @@
         self.setNewState = function() {
             self.getSchool().then(function(response) {
 
-                var nextId = response.length > 1 ? response[response.length - 1].id + 1 : 0,
+                var nextId = response.length >= 1 ? response[response.length - 1].id + 1 : 0,
                     box = document.createElement('div');
 
                 box.classList.add('adminSchools__add');
