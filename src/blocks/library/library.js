@@ -852,15 +852,37 @@ var Library = function () {
     /**
      * Expand array of id into string
      * @param {Array} list of id
-     * @param {Object} table for filtering
+     * @param {Array} table for filtering
      * @returns {string} result string
      */
     self.expand = function(list, table) {
-        return list.map(function(requestedId) {
-            return table.filter(function(item) {
-                return item.id === requestedId;
-            })[0].title;
-        }).join(', ');
+        var resultList = [];
+
+        if (list.length > 0 && table.length > 0) {
+
+            resultList = list.map(function(requestedId) {
+
+                var resultItem = table.filter(function(item) {
+                    return item.id === requestedId;
+                });
+
+                try {
+
+                    return resultItem[0].title
+
+                } catch(error) {
+
+                    console.log('Ошибка ' + error.name + ":" + error.message + "\n" + error.stack);
+
+                    return '';
+
+                }
+
+            });
+
+        }
+
+        return resultList.join(', ');
     };
 
     /**

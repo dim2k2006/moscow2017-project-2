@@ -77,7 +77,7 @@
 
                 contentItem.querySelector('.adminSchedule__box__name').innerHTML = item.title;
 
-                contentItem.querySelector('.adminSchedule__box__school').innerHTML = self.expand(item.school, response.schools);
+                contentItem.querySelector('.adminSchedule__box__school').innerHTML += self.expand(item.school, response.schools);
 
                 contentItem.querySelector('.adminSchedule__box__author').innerHTML += self.expand(item.author, response.authors);
 
