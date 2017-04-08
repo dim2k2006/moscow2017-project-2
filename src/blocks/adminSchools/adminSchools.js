@@ -14,6 +14,7 @@
         self.alert = '';
         self.getSchool = '';
         self.insert = '';
+        self.update = '';
         self.container = document.querySelector('.adminSchools');
         self.content = self.container.querySelector('.adminSchools__content');
         self.schoolSelect = self.container.querySelector('.formSelect__select[name="school"]');
@@ -77,7 +78,23 @@
          * Edit item in database
          */
         self.edit = function() {
-            console.log('edit')
+            self.update('schools', {
+                id: parseInt(self.container.querySelector('.formInput__input[name="id"]').value),
+                title: self.container.querySelector('.formInput__input[name="title"]').value,
+                student: parseInt(self.container.querySelector('.formInput__input[name="student"]').value)
+            }).then(function(response) {
+                self.alert({
+                    title: '',
+                    text: response,
+                    type: 'success'
+                });
+            }, function(response) {
+                self.alert({
+                    title: '',
+                    text: response,
+                    type: 'error'
+                });
+            });
         };
 
         /**
@@ -207,6 +224,7 @@
             self.alert = app.modules.admin.alert;
             self.getSchool = app.modules.main.library.getSchool;
             self.insert = app.modules.main.library.insert;
+            self.update = app.modules.main.library.update;
             self.delete = app.modules.main.library.delete;
         };
 

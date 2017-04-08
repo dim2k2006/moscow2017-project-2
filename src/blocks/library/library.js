@@ -886,6 +886,33 @@ var Library = function () {
     };
 
     /**
+     * Validate data
+     * @param {String} table
+     * @param {Object} data
+     * @param {Object} types
+     * @returns {Object}
+     */
+    self.validate = function(table, data, types) {
+        for (var field in types[table]) {
+            if (types[table].hasOwnProperty(field) && data.hasOwnProperty(field)) {
+
+                if (data[field] === undefined || isNaN(data[field]) || data[field].length === 0 || typeof data[field] !== types[table][field]) {
+
+                    return {type: 'error', msg: 'Указан некорректный тип данных для поля ' + field + ' в таблице ' + table};
+
+                }
+
+            } else {
+
+                return {type: 'error', msg: 'Указано некорректное поле для таблицы ' + table};
+
+            }
+        }
+
+        return {type: 'success', msg: 'Данные корректны'};
+    };
+
+    /**
      * Select data from database
      * @param {Array} tables
      */
@@ -913,22 +940,13 @@ var Library = function () {
 
     /**
      * Update data in database
-     */
-    self.update = function() {
-
-    };
-
-    /**
-     * Insert data in database
      * @param {String} table
      * @param {Object} data
      */
-    self.insert = function(table, data) {
+    self.update = function(table, data) {
         return new Promise(function(resolve, reject) {
             self.query().then(function(response) {
                 if (response.hasOwnProperty(table) && self.dataType[table]) {
-
-                    data.id = response[table].length >= 1 ? response[table][response[table].length - 1].id + 1 : 0;
 
                     for (var field in self.dataType[table]) {
 
@@ -952,11 +970,52 @@ var Library = function () {
 
                     }
 
-                    response[table].push(data);
+                    console.log(data);
 
-                    self.updateLocalStorage(response);
+                    // response[table].push(data);
 
-                    resolve('Данные добавлены в таблицу ' + table);
+                    // self.updateLocalStorage(response);
+
+                    // resolve('Данные добавлены в таблицу ' + table);
+
+                } else {
+
+                    reject('Не удалось получить данные для таблицы ' + table);
+
+                }
+            });
+        });
+    };
+
+    /**
+     * Insert data in database
+     * @param {String} table
+     * @param {Object} data
+     */
+    self.insert = function(table, data) {
+        return new Promise(function(resolve, reject) {
+            self.query().then(function(response) {
+                if (response.hasOwnProperty(table) && self.dataType[table]) {
+
+                    data.id = response[table].length >= 1 ? response[table][response[table].length - 1].id + 1 : 0;
+
+                    var isValid = self.validate(table, data, self.dataType);
+
+                    if (isValid.type === 'error') {
+
+                        reject(isValid.msg);
+
+                        return false;
+
+                    } else {
+
+                        response[table].push(data);
+
+                        self.updateLocalStorage(response);
+
+                        resolve('Данные добавлены в таблицу ' + table);
+
+                    }
 
                 } else {
 
