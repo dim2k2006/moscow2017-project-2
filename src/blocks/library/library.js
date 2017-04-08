@@ -928,6 +928,8 @@ var Library = function () {
             self.query().then(function(response) {
                 if (response.hasOwnProperty(table) && self.dataType[table]) {
 
+                    data.id = response[table].length >= 1 ? response[table][response[table].length - 1].id + 1 : 0;
+
                     for (var field in self.dataType[table]) {
 
                         if (self.dataType[table].hasOwnProperty(field) && data.hasOwnProperty(field)) {

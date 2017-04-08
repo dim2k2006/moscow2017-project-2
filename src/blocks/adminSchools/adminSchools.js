@@ -11,6 +11,7 @@
         var self = this;
 
         self.body = '';
+        self.alert = '';
         self.getSchool = '';
         self.insert = '';
         self.container = document.querySelector('.adminSchools');
@@ -55,12 +56,20 @@
                 title: self.container.querySelector('.formInput__input[name="title"]').value,
                 student: parseInt(self.container.querySelector('.formInput__input[name="student"]').value)
             }).then(function(response) {
-                alert(response);
+                self.alert({
+                    title: '',
+                    text: response,
+                    type: 'success'
+                });
 
                 self.setupSchoolFilter();
                 self.setNewState();
             }, function(response) {
-                alert(response);
+                self.alert({
+                    title: '',
+                    text: response,
+                    type: 'error'
+                });
             });
         };
 
@@ -82,12 +91,20 @@
                     title: self.container.querySelector('.formInput__input[name="title"]').value,
                     student: parseInt(self.container.querySelector('.formInput__input[name="student"]').value)
                 }).then(function(response) {
-                    alert(response);
+                    self.alert({
+                        title: '',
+                        text: response,
+                        type: 'success'
+                    });
 
                     self.setupSchoolFilter();
                     self.setNewState();
                 }, function(response) {
-                    alert(response);
+                    self.alert({
+                        title: '',
+                        text: response,
+                        type: 'error'
+                    });
                 });
 
             }
@@ -157,16 +174,13 @@
         self.setNewState = function() {
             self.getSchool().then(function(response) {
 
-                var nextId = response.length >= 1 ? response[response.length - 1].id + 1 : 0,
-                    box = document.createElement('div');
+                var box = document.createElement('div');
 
                 box.classList.add('adminSchools__add');
 
                 box.innerHTML = self.editTemplate;
 
-                box.querySelector('.formInput__input[name="id"]').value = nextId;
-
-                box.querySelector('.formInput__input[name="id"]').disabled = true;
+                box.querySelector('.adminSchools__box__col_1').style.display = 'none';
 
                 box.querySelector('.adminSchools__box__button_type_edit').style.display = 'none';
 
@@ -190,6 +204,7 @@
          */
         self.importDefaults = function() {
             self.body = app.modules.main.body;
+            self.alert = app.modules.admin.alert;
             self.getSchool = app.modules.main.library.getSchool;
             self.insert = app.modules.main.library.insert;
             self.delete = app.modules.main.library.delete;

@@ -60,6 +60,14 @@
         };
 
         /**
+         * Show alert modal window
+         * @param {Object} options
+         */
+        self.alert = function(options) {
+            alert(options.text);
+        };
+
+        /**
          * Import properties from Main class
          */
         self.importDefaults = function() {
