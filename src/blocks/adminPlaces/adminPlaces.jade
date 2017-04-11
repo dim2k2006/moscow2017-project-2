@@ -1,0 +1,108 @@
+include ../formInput/formInput
+include ../formSelect/formSelect
+
+mixin adminPlaces
+    +b('div').adminPlaces
+        +e('div').wrapper
+            +e('div').header
+                +e('div').title!= "Выберите аудиторию для редактирования"
+
+                +e('div').filter
+                    +e('div').filter__item
+                        +formSelect({
+                            label: 'Выберите аудиторию',
+                            name: 'place',
+                            id: 'place',
+                            list: []
+                        })
+
+            +e('div').content
+
+
+            +e('div').footer
+                script(type="x-template", id="adminPlaces-template").
+                    <div class="adminPlaces__box">
+                        <div class="adminPlaces__box__header">
+                            <div class="adminPlaces__title">Или добавьте новую аудиторию</div>
+                        </div>
+
+                        <div class="adminPlaces__box__content">
+                            <div class="adminPlaces__box__col adminPlaces__box__col_1">
+                                <div class="formInput">
+                                    <div class="formInput__wrapper">
+                                        <div class="formInput__header">
+                                            <label for="id" class="formInput__label">Id</label>
+                                        </div>
+
+                                        <div class="formInput__content">
+                                            <input type="text" name="id" id="id" value="" class="formInput__input">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="adminPlaces__box__col adminPlaces__box__col_2">
+                                <div class="formInput">
+                                    <div class="formInput__wrapper">
+                                        <div class="formInput__header">
+                                            <label for="title" class="formInput__label">Название</label>
+                                        </div>
+
+                                        <div class="formInput__content">
+                                            <input type="text" name="title" id="title" value="" class="formInput__input">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="adminPlaces__box__col adminPlaces__box__col_3">
+                                <div class="formInput">
+                                    <div class="formInput__wrapper">
+                                        <div class="formInput__header">
+                                            <label for="address" class="formInput__label">Адрес</label>
+                                        </div>
+
+                                        <div class="formInput__content">
+                                            <input type="text" name="address" id="address" value="" class="formInput__input">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="adminPlaces__box__col adminPlaces__box__col_4">
+                                <div class="formInput">
+                                    <div class="formInput__wrapper">
+                                        <div class="formInput__header">
+                                            <label for="link" class="formInput__label">Сылка на карту</label>
+                                        </div>
+
+                                        <div class="formInput__content">
+                                            <input type="text" name="link" id="link" value="" class="formInput__input">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="adminPlaces__box__col adminPlaces__box__col_5">
+                                <div class="formInput">
+                                    <div class="formInput__wrapper">
+                                        <div class="formInput__header">
+                                            <label for="capacity" class="formInput__label">Вместимость, человек</label>
+                                        </div>
+
+                                        <div class="formInput__content">
+                                            <input type="text" name="capacity" id="capacity" value="" class="formInput__input">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="adminPlaces__box__footer">
+                            <a href="#" class="adminPlaces__box__button adminPlaces__box__button_type_edit" title="Изменить данные о школе" data-action="edit">Изменить</a>
+
+                            <a href="#" class="adminPlaces__box__button adminPlaces__box__button_type_remove" title="Удалить школу" data-action="remove">Удалить</a>
+
+                            <a href="#" class="adminPlaces__box__button adminPlaces__box__button_type_add" title="Добавить школу" data-action="add">Добавить</a>
+                        </div>
+                    </div>

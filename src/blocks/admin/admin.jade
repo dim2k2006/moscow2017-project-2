@@ -1,6 +1,7 @@
 include ../adminSchedule/adminSchedule
 
 include ../adminSchools/adminSchools
+include ../adminPlaces/adminPlaces
 
 mixin admin
     +b('section').admin
@@ -22,7 +23,7 @@ mixin admin
                                 +e('a').aside__link(href="#schools")!= "Школы"
 
                             +e('li').aside__item
-                                +e('a').aside__link(href="#audiences")!= "Аудитории"
+                                +e('a').aside__link(href="#places")!= "Аудитории"
 
                 +e('div').col(class="admin__col_main")
                     +e('div').main
@@ -35,5 +36,5 @@ mixin admin
                         +e('div').box(id="schools")
                             +adminSchools
 
-                        +e('div').box(id="audiences")
-                            != "Аудитории"
+                        +e('div').box(id="places")
+                            +adminPlaces

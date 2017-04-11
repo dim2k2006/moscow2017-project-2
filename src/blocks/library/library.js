@@ -10,6 +10,13 @@ var Library = function () {
             id: 'number',
             title: 'string',
             student: 'number'
+        },
+        places: {
+            id: 'number',
+            title: 'string',
+            address: 'string',
+            link: 'string',
+            capacity: 'number'
         }
     };
     self.data = {
@@ -689,19 +696,22 @@ var Library = function () {
         "places": [
             {
                 "id": 0,
-                "title": "ул. Льва Толстого, 16, аудитория 3",
+                "title": "Синий кит",
+                "address": "ул. Льва Толстого, 16",
                 "link": "https://maps.yandex.by/-/C6EciCja",
                 "capacity": 60
             },
             {
                 "id": 1,
-                "title": "ул. Льва Толстого, 16, аудитория 5",
+                "title": "Зеленая комната",
+                "address": "ул. Льва Толстого, 16",
                 "link": "https://maps.yandex.by/-/C6EciCja",
                 "capacity": 40
             },
             {
                 "id": 2,
-                "title": "ул. Льва Толстого, 16, аудитория 14",
+                "title": "Красный шар",
+                "address": "ул. Льва Толстого, 16",
                 "link": "https://maps.yandex.by/-/C6EciCja",
                 "capacity": 50
             }
