@@ -803,7 +803,7 @@ var Library = function () {
 
                 }
 
-                resolve(result.length > 0 ? result : [{title: 'Лектор с идентификатором ' + id + 'не найден'}]);
+                resolve(result.length > 0 ? result : [{title: 'Лектор с идентификатором ' + id + 'не найден.'}]);
             });
         });
     };
@@ -830,7 +830,7 @@ var Library = function () {
 
                 }
 
-                resolve(result.length > 0 ? result : [{title: 'Место с идентификатором ' + id + 'не найдено'}]);
+                resolve(result.length > 0 ? result : [{title: 'Место с идентификатором ' + id + 'не найдено.'}]);
             });
         });
     };
@@ -896,20 +896,32 @@ var Library = function () {
         for (var field in types[table]) {
             if (types[table].hasOwnProperty(field) && data.hasOwnProperty(field)) {
 
-                if (data[field] === undefined || isNaN(data[field]) || data[field].length === 0 || typeof data[field] !== types[table][field]) {
+                if (data[field] !== undefined && typeof data[field] === types[table][field]) {
 
-                    return {type: 'error', msg: 'Указан некорректный тип данных для поля ' + field + ' в таблице ' + table};
+                    if (types[table][field] === 'string' && data[field].length === 0) {
+
+                        return {type: 'error', msg: 'Указан некорректный тип данных для поля ' + field + ' в таблице ' + table + '.'};
+
+                    } else if (types[table][field] === 'number' && isNaN(data[field])) {
+
+                        return {type: 'error', msg: 'Указан некорректный тип данных для поля ' + field + ' в таблице ' + table + '.'};
+
+                    }
+
+                } else {
+
+                    return {type: 'error', msg: 'Указан некорректный тип данных для поля ' + field + ' в таблице ' + table + '.'};
 
                 }
 
             } else {
 
-                return {type: 'error', msg: 'Указано некорректное поле для таблицы ' + table};
+                return {type: 'error', msg: 'Указано некорректное поле для таблицы ' + table + '.'};
 
             }
         }
 
-        return {type: 'success', msg: 'Данные корректны'};
+        return {type: 'success', msg: 'Данные корректны.'};
     };
 
     /**
@@ -928,7 +940,7 @@ var Library = function () {
 
                     } else {
 
-                        throw new Error('Не удалось получить данные для таблицы ' + table);
+                        throw new Error('Не удалось получить данные для таблицы ' + table + '.');
 
                     }
                 });
@@ -948,39 +960,35 @@ var Library = function () {
             self.query().then(function(response) {
                 if (response.hasOwnProperty(table) && self.dataType[table]) {
 
-                    for (var field in self.dataType[table]) {
+                    var isValid = self.validate(table, data, self.dataType);
 
-                        if (self.dataType[table].hasOwnProperty(field) && data.hasOwnProperty(field)) {
+                    if (isValid.type === 'error') {
 
-                            if (data[field].length === 0 || typeof data[field] !== self.dataType[table][field]) {
+                        reject(isValid.msg);
 
-                                reject('Указан некорректный тип данных для поля ' + field + ' в таблице ' + table);
+                        return false;
 
-                                return false;
+                    } else {
 
-                            }
+                        response[table] = response[table].map(function(item) {
+                             if (item.id === data.id) {
 
-                        } else {
+                                 item = data;
 
-                            reject('Указано некорректное поле для таблицы ' + table);
+                             }
 
-                            return false;
+                             return item;
+                        });
 
-                        }
+                        self.updateLocalStorage(response);
+
+                        resolve('Данные в таблице ' + table + ' изменены.');
 
                     }
 
-                    console.log(data);
-
-                    // response[table].push(data);
-
-                    // self.updateLocalStorage(response);
-
-                    // resolve('Данные добавлены в таблицу ' + table);
-
                 } else {
 
-                    reject('Не удалось получить данные для таблицы ' + table);
+                    reject('Не удалось получить данные для таблицы ' + table + '.');
 
                 }
             });
@@ -1013,13 +1021,13 @@ var Library = function () {
 
                         self.updateLocalStorage(response);
 
-                        resolve('Данные добавлены в таблицу ' + table);
+                        resolve('Данные добавлены в таблицу ' + table + '.');
 
                     }
 
                 } else {
 
-                    reject('Не удалось получить данные для таблицы ' + table);
+                    reject('Не удалось получить данные для таблицы ' + table + '.');
 
                 }
             });
@@ -1047,11 +1055,11 @@ var Library = function () {
 
                         self.updateLocalStorage(response);
 
-                        resolve('Данные успешно удалены из таблицы ' + table);
+                        resolve('Данные успешно удалены из таблицы ' + table + '.');
 
                     } else {
 
-                        reject('Не удалось найти данные с id ' + data.id + ' в таблице ' + table);
+                        reject('Не удалось найти данные с id ' + data.id + ' в таблице ' + table + '.');
 
                     }
                 }
@@ -1073,7 +1081,7 @@ var Library = function () {
 
             } else {
 
-                reject(new Error('Не удалось получить данные'));
+                reject(new Error('Не удалось получить данные.'));
 
             }
         });
