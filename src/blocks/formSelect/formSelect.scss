@@ -78,4 +78,24 @@ $formSelect: '.formSelect';
         border-radius: 0;
         background-color: transparent;
     }
+
+    &#{$formSelect}_state_multiple {
+        #{$formSelect} {
+            &__content,
+            &__select {
+                height: 100px;
+            }
+
+            &__content {
+                &:before,
+                &:after {
+                    display: none;
+                }
+            }
+
+            &__select {
+                width: 100%;
+            }
+        }
+    }
 }

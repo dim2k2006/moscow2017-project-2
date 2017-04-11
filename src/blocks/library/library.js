@@ -6,6 +6,19 @@ var Library = function () {
     var self = this;
 
     self.dataType = {
+        lectures: {
+            id: 'number',
+            title: 'string',
+            school: 'array',
+            author: 'array',
+            date: {
+                day: 'string',
+                time: 'string'
+            },
+            place: 'number',
+            isOver: 'boolean',
+            resources: 'string'
+        },
         schools: {
             id: 'number',
             title: 'string',
@@ -761,6 +774,33 @@ var Library = function () {
 
                 resolve(response);
             });
+        });
+    };
+
+    /**
+     * Get lecture by id. If id not defined then return all lectures
+     * @param {Number} id
+     * @returns {Array}
+     */
+    self.getLecture = function(id) {
+        return new Promise(function(resolve, reject) {
+            self.select(['lectures']).then(function(response) {
+                var result = [];
+
+                if (typeof id === 'number') {
+
+                    result = response.lectures.filter(function(item) {
+                        return item.id === id;
+                    });
+
+                } else {
+
+                    result = response.lectures.slice();
+
+                }
+
+                resolve(result);
+            })
         });
     };
 

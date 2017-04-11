@@ -1,5 +1,5 @@
 include ../adminSchedule/adminSchedule
-
+include ../adminLectures/adminLectures
 include ../adminSchools/adminSchools
 include ../adminPlaces/adminPlaces
 
@@ -31,7 +31,7 @@ mixin admin
                             +adminSchedule
 
                         +e('div').box(id="lectures")
-                            != "Лекции"
+                            +adminLectures
 
                         +e('div').box(id="schools")
                             +adminSchools
