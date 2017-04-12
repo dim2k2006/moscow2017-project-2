@@ -11,10 +11,8 @@ var Library = function () {
             title: 'string',
             school: 'array',
             author: 'array',
-            date: {
-                day: 'string',
-                time: 'string'
-            },
+            day: 'string',
+            time: 'string',
             place: 'number',
             isOver: 'boolean',
             resources: 'string'
@@ -39,10 +37,8 @@ var Library = function () {
                 "title": "Лекция 1. Адаптивная вёрстка",
                 "school": [0, 1],
                 "author": [1],
-                "date": {
-                    "day": "2016/10/20",
-                    "time": "14:00"
-                },
+                "day": "2016/10/20",
+                "time": "14:00",
                 "place": 0,
                 "isOver": false,
                 "resources": "#"
@@ -52,10 +48,8 @@ var Library = function () {
                 "title": "Лекция 2. Работа с сенсорным пользовательским вводом",
                 "school": [0],
                 "author": [1],
-                "date": {
-                    "day": "2016/10/27",
-                    "time": "14:00"
-                },
+                "day": "2016/10/27",
+                "time": "14:00",
                 "place": 1,
                 "isOver": false,
                 "resources": "#"
@@ -65,10 +59,8 @@ var Library = function () {
                 "title": "Лекция 3. Мультимедиа: возможности браузера",
                 "school": [0],
                 "author": [2],
-                "date": {
-                    "day": "2016/11/3",
-                    "time": "14:00"
-                },
+                "day": "2016/11/3",
+                "time": "14:00",
                 "place": 2,
                 "isOver": false,
                 "resources": "#"
@@ -78,10 +70,8 @@ var Library = function () {
                 "title": "Лекция 4. Нативные приложения на веб-технологиях",
                 "school": [0],
                 "author": [3],
-                "date": {
-                    "day": "2016/11/10",
-                    "time": "14:00"
-                },
+                "day": "2016/11/10",
+                "time": "14:00",
                 "place": 0,
                 "isOver": false,
                 "resources": "#"
@@ -91,10 +81,8 @@ var Library = function () {
                 "title": "Лекция 5. Клиентская оптимизация: базовые знания и лучшие практики",
                 "school": [0],
                 "author": [4],
-                "date": {
-                    "day": "2016/11/17",
-                    "time": "14:00"
-                },
+                "day": "2016/11/17",
+                "time": "14:00",
                 "place": 1,
                 "isOver": false,
                 "resources": "#"
@@ -104,10 +92,8 @@ var Library = function () {
                 "title": "Лекция 6. Клиентская оптимизация: мобильные устройства и инструменты",
                 "school": [0],
                 "author": [5],
-                "date": {
-                    "day": "2016/11/24",
-                    "time": "14:00"
-                },
+                "day": "2016/11/24",
+                "time": "14:00",
                 "place": 2,
                 "isOver": false,
                 "resources": "#"
@@ -117,10 +103,8 @@ var Library = function () {
                 "title": "Лекция 7. Инфраструктура веб-проектов",
                 "school": [0],
                 "author": [6],
-                "date": {
-                    "day": "2016/12/1",
-                    "time": "14:00"
-                },
+                "day": "2016/12/1",
+                "time": "14:00",
                 "place": 0,
                 "isOver": false,
                 "resources": "#"
@@ -130,10 +114,8 @@ var Library = function () {
                 "title": "Лекция 8. Инструменты разработки мобильного фронтенда",
                 "school": [0],
                 "author": [6],
-                "date": {
-                    "day": "2016/12/1",
-                    "time": "16:00"
-                },
+                "day": "2016/12/1",
+                "time": "16:00",
                 "place": 2,
                 "isOver": false,
                 "resources": "#"
@@ -143,10 +125,8 @@ var Library = function () {
                 "title": "Лекция 1. Java Blitz (Часть 1)",
                 "school": [1],
                 "author": [7],
-                "date": {
-                    "day": "2016/10/19",
-                    "time": "14:00"
-                },
+                "day": "2016/10/19",
+                "time": "14:00",
                 "place": 1,
                 "isOver": false,
                 "resources": "#"
@@ -156,10 +136,8 @@ var Library = function () {
                 "title": "Лекция 2. Git & Workflow",
                 "school": [1],
                 "author": [8],
-                "date": {
-                    "day": "2016/10/19",
-                    "time": "16:00"
-                },
+                "day": "2016/10/19",
+                "time": "16:00",
                 "place": 1,
                 "isOver": false,
                 "resources": "#"
@@ -169,10 +147,8 @@ var Library = function () {
                 "title": "Лекция 3. Java Blitz (Часть 2)",
                 "school": [1],
                 "author": [7],
-                "date": {
-                    "day": "2016/10/25",
-                    "time": "14:00"
-                },
+                "day": "2016/10/25",
+                "time": "14:00",
                 "place": 2,
                 "isOver": false,
                 "resources": "#"
@@ -182,10 +158,8 @@ var Library = function () {
                 "title": "MyFirstApp (Часть 1)",
                 "school": [1],
                 "author": [9],
-                "date": {
-                    "day": "2016/10/25",
-                    "time": "16:00"
-                },
+                "day": "2016/10/25",
+                "time": "16:00",
                 "place": 1,
                 "isOver": false,
                 "resources": "#"
@@ -195,10 +169,8 @@ var Library = function () {
                 "title": "Лекция 5. MyFirstApp (Часть 2)",
                 "school": [1],
                 "author": [9],
-                "date": {
-                    "day": "2016/11/2",
-                    "time": "14:00"
-                },
+                "day": "2016/11/2",
+                "time": "14:00",
                 "place": 2,
                 "isOver": false,
                 "resources": "#"
@@ -208,10 +180,8 @@ var Library = function () {
                 "title": "Лекция 6. ViewGroup",
                 "school": [1],
                 "author": [10],
-                "date": {
-                    "day": "2016/11/2",
-                    "time": "16:00"
-                },
+                "day": "2016/11/2",
+                "time": "16:00",
                 "place": 1,
                 "isOver": false,
                 "resources": "#"
@@ -221,10 +191,8 @@ var Library = function () {
                 "title": "Лекция 7. Background",
                 "school": [1],
                 "author": [11],
-                "date": {
-                    "day": "2016/11/9",
-                    "time": "14:00"
-                },
+                "day": "2016/11/9",
+                "time": "14:00",
                 "place": 0,
                 "isOver": false,
                 "resources": "#"
@@ -234,10 +202,8 @@ var Library = function () {
                 "title": "Лекция 8. RecyclerView",
                 "school": [1],
                 "author": [12],
-                "date": {
-                    "day": "2016/11/9",
-                    "time": "16:00"
-                },
+                "day": "2016/11/9",
+                "time": "16:00",
                 "place": 1,
                 "isOver": false,
                 "resources": "#"
@@ -247,10 +213,8 @@ var Library = function () {
                 "title": "Лекция 9. Service & Broadcasts",
                 "school": [1],
                 "author": [11],
-                "date": {
-                    "day": "2016/11/16",
-                    "time": "14:00"
-                },
+                "day": "2016/11/16",
+                "time": "14:00",
                 "place": 0,
                 "isOver": false,
                 "resources": "#"
@@ -260,10 +224,8 @@ var Library = function () {
                 "title": "Лекция 10. Drawing",
                 "school": [1],
                 "author": [10],
-                "date": {
-                    "day": "2016/11/16",
-                    "time": "16:00"
-                },
+                "day": "2016/11/16",
+                "time": "16:00",
                 "place": 2,
                 "isOver": false,
                 "resources": "#"
@@ -273,10 +235,8 @@ var Library = function () {
                 "title": "Лекция 11. Content provider",
                 "school": [1],
                 "author": [13],
-                "date": {
-                    "day": "2016/11/23",
-                    "time": "14:00"
-                },
+                "day": "2016/11/23",
+                "time": "14:00",
                 "place": 0,
                 "isOver": false,
                 "resources": "#"
@@ -286,10 +246,8 @@ var Library = function () {
                 "title": "Лекция 12. SQL&SQLite",
                 "school": [1],
                 "author": [13],
-                "date": {
-                    "day": "2016/11/23",
-                    "time": "16:00"
-                },
+                "day": "2016/11/23",
+                "time": "16:00",
                 "place": 1,
                 "isOver": false,
                 "resources": "#"
@@ -299,10 +257,8 @@ var Library = function () {
                 "title": "Лекция 13. Fragments (Часть 1)",
                 "school": [1],
                 "author": [14],
-                "date": {
-                    "day": "2016/11/30",
-                    "time": "14:00"
-                },
+                "day": "2016/11/30",
+                "time": "14:00",
                 "place": 2,
                 "isOver": false,
                 "resources": "#"
@@ -312,10 +268,8 @@ var Library = function () {
                 "title": "Лекция 14. Fragments (Часть 2)",
                 "school": [1],
                 "author": [14],
-                "date": {
-                    "day": "2016/11/30",
-                    "time": "16:00"
-                },
+                "day": "2016/11/30",
+                "time": "16:00",
                 "place": 2,
                 "isOver": false,
                 "resources": "#"
@@ -325,10 +279,8 @@ var Library = function () {
                 "title": "Лекция 15. MVP&Co",
                 "school": [1],
                 "author": [15],
-                "date": {
-                    "day": "2016/12/7",
-                    "time": "14:00"
-                },
+                "day": "2016/12/7",
+                "time": "14:00",
                 "place": 0,
                 "isOver": false,
                 "resources": "#"
@@ -338,10 +290,8 @@ var Library = function () {
                 "title": "Лекция 16. Debugging & Polishing",
                 "school": [1],
                 "author": [16],
-                "date": {
-                    "day": "2016/12/14",
-                    "time": "14:00"
-                },
+                "day": "2016/12/14",
+                "time": "14:00",
                 "place": 2,
                 "isOver": false,
                 "resources": "#"
@@ -351,10 +301,8 @@ var Library = function () {
                 "title": "Лекция 1. Идея, исследование, концепт (Часть 1)",
                 "school": [2],
                 "author": [0],
-                "date": {
-                    "day": "2016/10/18",
-                    "time": "14:00"
-                },
+                "day": "2016/10/18",
+                "time": "14:00",
                 "place": 0,
                 "isOver": false,
                 "resources": "#"
@@ -364,10 +312,8 @@ var Library = function () {
                 "title": "Лекция 2. Идея, исследование, концепт (Часть 2)",
                 "school": [2],
                 "author": [0],
-                "date": {
-                    "day": "2016/10/18",
-                    "time": "16:00"
-                },
+                "day": "2016/10/18",
+                "time": "16:00",
                 "place": 1,
                 "isOver": false,
                 "resources": "#"
@@ -377,10 +323,8 @@ var Library = function () {
                 "title": "Лекция 3. Особенности проектирования мобильных интерфейсов",
                 "school": [2],
                 "author": [17],
-                "date": {
-                    "day": "2016/10/25",
-                    "time": "14:00"
-                },
+                "day": "2016/10/25",
+                "time": "14:00",
                 "place": 2,
                 "isOver": false,
                 "resources": "#"
@@ -390,10 +334,8 @@ var Library = function () {
                 "title": "Лекция 4. Продукт и платформа",
                 "school": [2],
                 "author": [18],
-                "date": {
-                    "day": "2016/11/1",
-                    "time": "14:00"
-                },
+                "day": "2016/11/1",
+                "time": "14:00",
                 "place": 0,
                 "isOver": false,
                 "resources": "#"
@@ -403,10 +345,8 @@ var Library = function () {
                 "title": "Лекция 5. Природа операционных систем",
                 "school": [2],
                 "author": [17],
-                "date": {
-                    "day": "2016/11/1",
-                    "time": "16:00"
-                },
+                "day": "2016/11/1",
+                "time": "16:00",
                 "place": 0,
                 "isOver": false,
                 "resources": "#"
@@ -416,10 +356,8 @@ var Library = function () {
                 "title": "Лекция 6. Прототипирование как процесс",
                 "school": [2],
                 "author": [19, 20],
-                "date": {
-                    "day": "2016/11/8",
-                    "time": "14:00"
-                },
+                "day": "2016/11/8",
+                "time": "14:00",
                 "place": 1,
                 "isOver": false,
                 "resources": "#"
@@ -429,10 +367,8 @@ var Library = function () {
                 "title": "Лекция 7. Инструмент под задачи",
                 "school": [2],
                 "author": [19, 20],
-                "date": {
-                    "day": "2016/11/8",
-                    "time": "16:00"
-                },
+                "day": "2016/11/8",
+                "time": "16:00",
                 "place": 1,
                 "isOver": false,
                 "resources": "#"
@@ -442,10 +378,8 @@ var Library = function () {
                 "title": "Лекция 8. Анимации",
                 "school": [2],
                 "author": [19, 20],
-                "date": {
-                    "day": "2016/11/15",
-                    "time": "14:00"
-                },
+                "day": "2016/11/15",
+                "time": "14:00",
                 "place": 2,
                 "isOver": false,
                 "resources": "#"
@@ -455,10 +389,8 @@ var Library = function () {
                 "title": "Дополнительная лекция. Design Everything",
                 "school": [2],
                 "author": [21, 22],
-                "date": {
-                    "day": "2016/11/15",
-                    "time": "16:00"
-                },
+                "day": "2016/11/15",
+                "time": "16:00",
                 "place": 2,
                 "isOver": false,
                 "resources": "#"
@@ -468,10 +400,8 @@ var Library = function () {
                 "title": "Лекция 9. Развите продукта",
                 "school": [2],
                 "author": [23],
-                "date": {
-                    "day": "2016/11/22",
-                    "time": "14:00"
-                },
+                "day": "2016/11/22",
+                "time": "14:00",
                 "place": 0,
                 "isOver": false,
                 "resources": "#"
@@ -481,10 +411,8 @@ var Library = function () {
                 "title": "Лекция 10. Исследование интерфейсов",
                 "school": [2],
                 "author": [24],
-                "date": {
-                    "day": "2016/11/29",
-                    "time": "14:00"
-                },
+                "day": "2016/11/29",
+                "time": "14:00",
                 "place": 1,
                 "isOver": false,
                 "resources": "#"
@@ -494,10 +422,8 @@ var Library = function () {
                 "title": "Лекция 11. Работа в команде",
                 "school": [2],
                 "author": [25],
-                "date": {
-                    "day": "2016/12/6",
-                    "time": "14:00"
-                },
+                "day": "2016/12/6",
+                "time": "14:00",
                 "place": 1,
                 "isOver": false,
                 "resources": "#"
@@ -507,10 +433,8 @@ var Library = function () {
                 "title": "Дополнительная лекция. Айдентика",
                 "school": [2],
                 "author": [26, 27],
-                "date": {
-                    "day": "2016/12/13",
-                    "time": "14:00"
-                },
+                "day": "2016/12/13",
+                "time": "14:00",
                 "place": 2,
                 "isOver": false,
                 "resources": "#"
@@ -754,7 +678,7 @@ var Library = function () {
         return new Promise(function(resolve, reject) {
             self.select(['lectures', 'schools', 'authors', 'places']).then(function(response) {
                 response.lectures = self.sort(response.lectures.filter(function(item) {
-                    var itemDate = new Date(item.date.day).getTime(),
+                    var itemDate = new Date(item.day).getTime(),
                         limitDateFrom = new Date(dateFrom).getTime() || 0,
                         limitDateTo = new Date(dateTo).getTime() || Infinity,
                         result = false;
@@ -892,8 +816,8 @@ var Library = function () {
      */
     self.sort = function(data) {
         return data.sort(function(a, b) {
-            var aDate = new Date(a.date.day + ' ' + a.date.time).getTime(),
-                bDate = new Date(b.date.day + ' ' + b.date.time).getTime();
+            var aDate = new Date(a.day + ' ' + a.time).getTime(),
+                bDate = new Date(b.day + ' ' + b.time).getTime();
 
             return aDate > bDate ? 1 : -1;
         });
@@ -943,6 +867,9 @@ var Library = function () {
      * @returns {Object}
      */
     self.validate = function(table, data, types) {
+        // TODO реализовать проверку на корректность формата даты и времени
+
+
         for (var field in types[table]) {
             if (types[table].hasOwnProperty(field) && data.hasOwnProperty(field)) {
 

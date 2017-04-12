@@ -81,9 +81,9 @@
 
                 contentItem.querySelector('.adminSchedule__box__author').innerHTML += self.expand(item.author, {title: 'authors', data: response.authors});
 
-                contentItem.querySelector('.adminSchedule__box__date').innerHTML += item.date.day;
+                contentItem.querySelector('.adminSchedule__box__date').innerHTML += item.day;
 
-                contentItem.querySelector('.adminSchedule__box__time').innerHTML += item.date.time;
+                contentItem.querySelector('.adminSchedule__box__time').innerHTML += item.time;
 
                 contentItem.querySelector('.adminSchedule__box__place').innerHTML += self.expand([item.place], {title: 'places', data: response.places});
 
