@@ -81,7 +81,7 @@
 
                 contentItem.querySelector('.adminSchedule__box__author').innerHTML += self.expand(item.author, {title: 'authors', data: response.authors});
 
-                contentItem.querySelector('.adminSchedule__box__date').innerHTML += item.day;
+                contentItem.querySelector('.adminSchedule__box__date').innerHTML += item.date;
 
                 contentItem.querySelector('.adminSchedule__box__time').innerHTML += item.time;
 
