@@ -1,14 +1,14 @@
 {
-    "name": "shri-2017-project-1",
+    "name": "shri-2017-project-2",
     "version": "0.1.0",
-    "description": "SHRI 2017 project 1",
+    "description": "SHRI 2017 project 2",
     "keywords": [
         "SHRI",
         "2017",
-        "project 1"
+        "project 2"
     ],
-    "homepage": "https://github.com/dim2k2006/moscow2017-project-1",
-    "bugs": "https://github.com/dim2k2006/moscow2017-project-1/issues",
+    "homepage": "https://github.com/dim2k2006/moscow2017-project-2",
+    "bugs": "https://github.com/dim2k2006/moscow2017-project-2/issues",
     "author": {
         "name": "Dmitry",
         "email": "dim2k2006@yandex.ru",
