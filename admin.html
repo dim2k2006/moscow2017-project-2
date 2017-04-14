@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+		<meta name="Description" content="Библиотека">
+		<meta name="Keywords" content="Библиотека">
+		<title>Библиотека</title>
+		<link href="/css/vendor.min.css" rel="stylesheet">
+		<link href="/css/main.min.css" rel="stylesheet">
+		<!--[if lt IE 9]><script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script><script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+	</head>
+
+	<body>
+		<main class="main">
+			<section class="admin">
+				<div class="admin__wrapper">
+					<div class="admin__header">
+						<div class="admin__title">Библиотека</div>
+					</div>
+					<div class="admin__content">
+						<div class="admin__col admin__col_aside">
+							<div class="admin__aside">
+								<ul class="admin__aside__list">
+									<li class="admin__aside__item"><a href="#schedule" class="admin__aside__link admin__aside__link_state_active">Расписание</a>
+									</li>
+									<li class="admin__aside__item"><a href="#lectures" class="admin__aside__link">Лекции</a>
+									</li>
+									<li class="admin__aside__item"><a href="#schools" class="admin__aside__link">Школы</a>
+									</li>
+									<li class="admin__aside__item"><a href="#places" class="admin__aside__link">Аудитории</a>
+									</li>
+									<li class="admin__aside__item"><a href="#authors" class="admin__aside__link">Лекторы</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="admin__col admin__col_main">
+							<div class="admin__main">
+								<div id="schedule" class="admin__box admin__box_state_active">
+									<div class="adminSchedule">
+										<div class="adminSchedule__wrapper">
+											<div class="adminSchedule__header">
+												<div class="adminSchedule__filter">
+													<div class="adminSchedule__filter__item">
+														<div class="formInput">
+															<div class="formInput__wrapper">
+																<div class="formInput__header">
+																	<label for="from" class="formInput__label">Начало</label>
+																</div>
+																<div class="formInput__content">
+																	<input type="date" name="from" id="from" min="2016-01-01" max="2016-12-31" value="2016-10-01" class="formInput__input">
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="adminSchedule__filter__item">
+														<div class="formInput">
+															<div class="formInput__wrapper">
+																<div class="formInput__header">
+																	<label for="to" class="formInput__label">Конец</label>
+																</div>
+																<div class="formInput__content">
+																	<input type="date" name="to" id="to" min="2016-01-01" max="2016-12-31" value="2016-12-31" class="formInput__input">
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="adminSchedule__filter__item">
+														<div class="formSelect">
+															<div class="formSelect__wrapper">
+																<div class="formSelect__header">
+																	<label for="place" class="formSelect__label">Аудитория</label>
+																</div>
+																<div class="formSelect__content">
+																	<select name="place" id="place" class="formSelect__select"></select>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="adminSchedule__content"></div>
+											<div class="adminSchedule__footer">
+												<script type="x-template" id="adminSchedule-template">
+													<div class="adminSchedule__box">
+													    <div class="adminSchedule__box__header">
+													        <div class="adminSchedule__box__name"></div>
+													
+													        <div class="adminSchedule__box__school">Школа: </div>
+													
+													        <div class="adminSchedule__box__author">Лектор: </div>
+													    </div>
+													
+													    <div class="adminSchedule__box__content">
+													        <div class="adminSchedule__box__date">Дата: </div>
+													
+													        <div class="adminSchedule__box__time">Время: </div>
+													
+													        <div class="adminSchedule__box__place">Аудитория: </div>
+													    </div>
+													
+													    <div class="adminSchedule__box__footer">
+													        <div class="adminSchedule__box__status">Статус: </div>
+													
+													        <div class="adminSchedule__box__resources"><a href="">Ссылка на материалы</a></div>
+													    </div>
+													</div>
+												</script>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div id="lectures" class="admin__box">
+									<div class="adminLectures">
+										<div class="adminLectures__wrapper">
+											<div class="adminLectures__header">
+												<div class="adminLectures__title">Выберите лекцию для редактирования</div>
+												<div class="adminLectures__filter">
+													<div class="adminLectures__filter__item">
+														<div class="formSelect">
+															<div class="formSelect__wrapper">
+																<div class="formSelect__header">
+																	<label for="lecture" class="formSelect__label">Выберите лекцию</label>
+																</div>
+																<div class="formSelect__content">
+																	<select name="lecture" id="lecture" class="formSelect__select"></select>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="adminLectures__content"></div>
+											<div class="adminLectures__footer">
+												<script type="x-template" id="adminLectures-template">
+													<div class="adminLectures__box">
+													    <div class="adminLectures__box__header">
+													        <div class="adminLectures__title">Или добавьте новую лекцию</div>
+													    </div>
+													
+													    <div class="adminLectures__box__content">
+													        <div class="adminLectures__box__col adminLectures__box__col_1">
+													            <div class="formInput">
+													                <div class="formInput__wrapper">
+													                    <div class="formInput__header">
+													                        <label for="id" class="formInput__label">Id</label>
+													                    </div>
+													
+													                    <div class="formInput__content">
+													                        <input type="text" name="id" id="id" value="" class="formInput__input">
+													                    </div>
+													                </div>
+													            </div>
+													        </div>
+													
+													        <div class="adminLectures__box__col adminLectures__box__col_2">
+													            <div class="formInput">
+													                <div class="formInput__wrapper">
+													                    <div class="formInput__header">
+													                        <label for="title" class="formInput__label">Название</label>
+													                    </div>
+													
+													                    <div class="formInput__content">
+													                        <input type="text" name="title" id="title" value="" class="formInput__input">
+													                    </div>
+													                </div>
+													            </div>
+													        </div>
+													
+													        <div class="adminLectures__box__col adminLectures__box__col_3">
+													            <div class="formSelect formSelect_state_multiple">
+													                <div class="formSelect__wrapper">
+													                    <div class="formSelect__header">
+													                        <label for="school" class="formSelect__label">Выберите школу или несколько школ</label>
+													                    </div>
+													
+													                    <div class="formSelect__content">
+													                        <select name="school" id="school" class="formSelect__select" multiple></select>
+													                    </div>
+													                </div>
+													            </div>
+													        </div>
+													
+													        <div class="adminLectures__box__col adminLectures__box__col_4">
+													            <div class="formSelect formSelect_state_multiple">
+													                <div class="formSelect__wrapper">
+													                    <div class="formSelect__header">
+													                        <label for="author" class="formSelect__label">Выберите лектора или несколько лекторов</label>
+													                    </div>
+													
+													                    <div class="formSelect__content">
+													                        <select name="author" id="author" class="formSelect__select" multiple></select>
+													                    </div>
+													                </div>
+													            </div>
+													        </div>
+													
+													        <div class="adminLectures__box__col adminLectures__box__col_5">
+													            <div class="formInput">
+													                <div class="formInput__wrapper">
+													                    <div class="formInput__header">
+													                        <label for="date" class="formInput__label">Дата</label>
+													                    </div>
+													
+													                    <div class="formInput__content">
+													                        <input type="text" name="date" id="date" value="" class="formInput__input" placeholder="гггг/мм/дд">
+													                    </div>
+													                </div>
+													            </div>
+													        </div>
+													
+													        <div class="adminLectures__box__col adminLectures__box__col_6">
+													            <div class="formInput">
+													                <div class="formInput__wrapper">
+													                    <div class="formInput__header">
+													                        <label for="time" class="formInput__label">Время</label>
+													                    </div>
+													
+													                    <div class="formInput__content">
+													                        <input type="text" name="time" id="time" value="" class="formInput__input" placeholder="чч:мм">
+													                    </div>
+													                </div>
+													            </div>
+													        </div>
+													
+													        <div class="adminLectures__box__col adminLectures__box__col_7">
+													            <div class="formSelect">
+													                <div class="formSelect__wrapper">
+													                    <div class="formSelect__header">
+													                        <label for="place" class="formSelect__label">Выберите аудиторию</label>
+													                    </div>
+													
+													                    <div class="formSelect__content">
+													                        <select name="place" id="place" class="formSelect__select"></select>
+													                    </div>
+													                </div>
+													            </div>
+													        </div>
+													
+													        <div class="adminLectures__box__col adminLectures__box__col_8">
+													            <div class="formSelect">
+													                <div class="formSelect__wrapper">
+													                    <div class="formSelect__header">
+													                        <label for="isOver" class="formSelect__label">Статус</label>
+													                    </div>
+													
+													                    <div class="formSelect__content">
+													                        <select name="isOver" id="isOver" class="formSelect__select">
+													                            <option value="0">Лекция еще не закончилась</option>
+													                            <option value="1">Лекция закончилась</option>
+													                        </select>
+													                    </div>
+													                </div>
+													            </div>
+													        </div>
+													
+													        <div class="adminLectures__box__col adminLectures__box__col_9">
+													            <div class="formInput">
+													                <div class="formInput__wrapper">
+													                    <div class="formInput__header">
+													                        <label for="resources" class="formInput__label">Ссылка на материалы</label>
+													                    </div>
+													
+													                    <div class="formInput__content">
+													                        <input type="text" name="resources" id="resources" value="" class="formInput__input">
+													                    </div>
+													                </div>
+													            </div>
+													        </div>
+													    </div>
+													
+													    <div class="adminLectures__box__footer">
+													        <a href="#" class="adminLectures__box__button adminLectures__box__button_type_edit" title="Изменить данные о лекции" data-action="edit">Изменить</a>
+													
+													        <a href="#" class="adminLectures__box__button adminLectures__box__button_type_remove" title="Удалить лекцию" data-action="remove">Удалить</a>
+													
+													        <a href="#" class="adminLectures__box__button adminLectures__box__button_type_add" title="Добавить лекцию" data-action="add">Добавить</a>
+													    </div>
+													</div>
+												</script>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div id="schools" class="admin__box">
+									<div class="adminSchools">
+										<div class="adminSchools__wrapper">
+											<div class="adminSchools__header">
+												<div class="adminSchools__title">Выберите школу для редактирования</div>
+												<div class="adminSchools__filter">
+													<div class="adminSchools__filter__item">
+														<div class="formSelect">
+															<div class="formSelect__wrapper">
+																<div class="formSelect__header">
+																	<label for="school" class="formSelect__label">Выберите школу</label>
+																</div>
+																<div class="formSelect__content">
+																	<select name="school" id="school" class="formSelect__select"></select>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="adminSchools__content"></div>
+											<div class="adminSchools__footer">
+												<script type="x-template" id="adminSchools-template">
+													<div class="adminSchools__box">
+													    <div class="adminSchools__box__header">
+													        <div class="adminSchools__title">Или добавьте новую школу</div>
+													    </div>
+													
+													    <div class="adminSchools__box__content">
+													        <div class="adminSchools__box__col adminSchools__box__col_1">
+													            <div class="formInput">
+													                <div class="formInput__wrapper">
+													                    <div class="formInput__header">
+													                        <label for="id" class="formInput__label">Id</label>
+													                    </div>
+													
+													                    <div class="formInput__content">
+													                        <input type="text" name="id" id="id" value="" class="formInput__input">
+													                    </div>
+													                </div>
+													            </div>
+													        </div>
+													
+													        <div class="adminSchools__box__col adminSchools__box__col_2">
+													            <div class="formInput">
+													                <div class="formInput__wrapper">
+													                    <div class="formInput__header">
+													                        <label for="title" class="formInput__label">Название</label>
+													                    </div>
+													
+													                    <div class="formInput__content">
+													                        <input type="text" name="title" id="title" value="" class="formInput__input">
+													                    </div>
+													                </div>
+													            </div>
+													        </div>
+													
+													        <div class="adminSchools__box__col adminSchools__box__col_3">
+													            <div class="formInput">
+													                <div class="formInput__wrapper">
+													                    <div class="formInput__header">
+													                        <label for="student" class="formInput__label">Количество учеников</label>
+													                    </div>
+													
+													                    <div class="formInput__content">
+													                        <input type="text" name="student" id="student" value="" class="formInput__input">
+													                    </div>
+													                </div>
+													            </div>
+													        </div>
+													    </div>
+													
+													    <div class="adminSchools__box__footer">
+													        <a href="#" class="adminSchools__box__button adminSchools__box__button_type_edit" title="Изменить данные о школе" data-action="edit">Изменить</a>
+													
+													        <a href="#" class="adminSchools__box__button adminSchools__box__button_type_remove" title="Удалить школу" data-action="remove">Удалить</a>
+													
+													        <a href="#" class="adminSchools__box__button adminSchools__box__button_type_add" title="Добавить школу" data-action="add">Добавить</a>
+													    </div>
+													</div>
+												</script>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div id="places" class="admin__box">
+									<div class="adminPlaces">
+										<div class="adminPlaces__wrapper">
+											<div class="adminPlaces__header">
+												<div class="adminPlaces__title">Выберите аудиторию для редактирования</div>
+												<div class="adminPlaces__filter">
+													<div class="adminPlaces__filter__item">
+														<div class="formSelect">
+															<div class="formSelect__wrapper">
+																<div class="formSelect__header">
+																	<label for="place" class="formSelect__label">Выберите аудиторию</label>
+																</div>
+																<div class="formSelect__content">
+																	<select name="place" id="place" class="formSelect__select"></select>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="adminPlaces__content"></div>
+											<div class="adminPlaces__footer">
+												<script type="x-template" id="adminPlaces-template">
+													<div class="adminPlaces__box">
+													    <div class="adminPlaces__box__header">
+													        <div class="adminPlaces__title">Или добавьте новую аудиторию</div>
+													    </div>
+													
+													    <div class="adminPlaces__box__content">
+													        <div class="adminPlaces__box__col adminPlaces__box__col_1">
+													            <div class="formInput">
+													                <div class="formInput__wrapper">
+													                    <div class="formInput__header">
+													                        <label for="id" class="formInput__label">Id</label>
+													                    </div>
+													
+													                    <div class="formInput__content">
+													                        <input type="text" name="id" id="id" value="" class="formInput__input">
+													                    </div>
+													                </div>
+													            </div>
+													        </div>
+													
+													        <div class="adminPlaces__box__col adminPlaces__box__col_2">
+													            <div class="formInput">
+													                <div class="formInput__wrapper">
+													                    <div class="formInput__header">
+													                        <label for="title" class="formInput__label">Название</label>
+													                    </div>
+													
+													                    <div class="formInput__content">
+													                        <input type="text" name="title" id="title" value="" class="formInput__input">
+													                    </div>
+													                </div>
+													            </div>
+													        </div>
+													
+													        <div class="adminPlaces__box__col adminPlaces__box__col_3">
+													            <div class="formInput">
+													                <div class="formInput__wrapper">
+													                    <div class="formInput__header">
+													                        <label for="address" class="formInput__label">Адрес</label>
+													                    </div>
+													
+													                    <div class="formInput__content">
+													                        <input type="text" name="address" id="address" value="" class="formInput__input">
+													                    </div>
+													                </div>
+													            </div>
+													        </div>
+													
+													        <div class="adminPlaces__box__col adminPlaces__box__col_4">
+													            <div class="formInput">
+													                <div class="formInput__wrapper">
+													                    <div class="formInput__header">
+													                        <label for="link" class="formInput__label">Сылка на карту</label>
+													                    </div>
+													
+													                    <div class="formInput__content">
+													                        <input type="text" name="link" id="link" value="" class="formInput__input">
+													                    </div>
+													                </div>
+													            </div>
+													        </div>
+													
+													        <div class="adminPlaces__box__col adminPlaces__box__col_5">
+													            <div class="formInput">
+													                <div class="formInput__wrapper">
+													                    <div class="formInput__header">
+													                        <label for="capacity" class="formInput__label">Вместимость, человек</label>
+													                    </div>
+													
+													                    <div class="formInput__content">
+													                        <input type="text" name="capacity" id="capacity" value="" class="formInput__input">
+													                    </div>
+													                </div>
+													            </div>
+													        </div>
+													    </div>
+													
+													    <div class="adminPlaces__box__footer">
+													        <a href="#" class="adminPlaces__box__button adminPlaces__box__button_type_edit" title="Изменить данные об аудитории" data-action="edit">Изменить</a>
+													
+													        <a href="#" class="adminPlaces__box__button adminPlaces__box__button_type_remove" title="Удалить аудиторию" data-action="remove">Удалить</a>
+													
+													        <a href="#" class="adminPlaces__box__button adminPlaces__box__button_type_add" title="Добавить аудиторию" data-action="add">Добавить</a>
+													    </div>
+													</div>
+												</script>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div id="authors" class="admin__box">
+									<div class="adminAuthors">
+										<div class="adminAuthors__wrapper">
+											<div class="adminAuthors__header">
+												<div class="adminAuthors__title">Выберите лектора для редактирования</div>
+												<div class="adminAuthors__filter">
+													<div class="adminAuthors__filter__item">
+														<div class="formSelect">
+															<div class="formSelect__wrapper">
+																<div class="formSelect__header">
+																	<label for="author" class="formSelect__label">Выберите лектора</label>
+																</div>
+																<div class="formSelect__content">
+																	<select name="author" id="author" class="formSelect__select"></select>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="adminAuthors__content"></div>
+											<div class="adminAuthors__footer">
+												<script type="x-template" id="adminAuthors-template">
+													<div class="adminAuthors__box">
+													    <div class="adminAuthors__box__header">
+													        <div class="adminAuthors__title">Или добавьте нового лектора</div>
+													    </div>
+													
+													    <div class="adminAuthors__box__content">
+													        <div class="adminAuthors__box__col adminAuthors__box__col_1">
+													            <div class="formInput">
+													                <div class="formInput__wrapper">
+													                    <div class="formInput__header">
+													                        <label for="id" class="formInput__label">Id</label>
+													                    </div>
+													
+													                    <div class="formInput__content">
+													                        <input type="text" name="id" id="id" value="" class="formInput__input">
+													                    </div>
+													                </div>
+													            </div>
+													        </div>
+													
+													        <div class="adminAuthors__box__col adminAuthors__box__col_2">
+													            <div class="formInput">
+													                <div class="formInput__wrapper">
+													                    <div class="formInput__header">
+													                        <label for="title" class="formInput__label">Имя и фамилия</label>
+													                    </div>
+													
+													                    <div class="formInput__content">
+													                        <input type="text" name="title" id="title" value="" class="formInput__input">
+													                    </div>
+													                </div>
+													            </div>
+													        </div>
+													
+													        <div class="adminAuthors__box__col adminAuthors__box__col_3">
+													            <div class="formInput">
+													                <div class="formInput__wrapper">
+													                    <div class="formInput__header">
+													                        <label for="description" class="formInput__label">Описание</label>
+													                    </div>
+													
+													                    <div class="formInput__content">
+													                        <textarea type="text" name="description" id="description" value="" class="formInput__input"></textarea>
+													                    </div>
+													                </div>
+													            </div>
+													        </div>
+													
+													        <div class="adminAuthors__box__col adminAuthors__box__col_4">
+													            <div class="formInput">
+													                <div class="formInput__wrapper">
+													                    <div class="formInput__header">
+													                        <label for="photo" class="formInput__label">Ссылка на фотографию</label>
+													                    </div>
+													
+													                    <div class="formInput__content">
+													                        <input type="text" name="photo" id="photo" value="" class="formInput__input">
+													                    </div>
+													                </div>
+													            </div>
+													        </div>
+													    </div>
+													
+													    <div class="adminAuthors__box__footer">
+													        <a href="#" class="adminAuthors__box__button adminAuthors__box__button_type_edit" title="Изменить данные о лекторе" data-action="edit">Изменить</a>
+													
+													        <a href="#" class="adminAuthors__box__button adminAuthors__box__button_type_remove" title="Удалить лектора" data-action="remove">Удалить</a>
+													
+													        <a href="#" class="adminAuthors__box__button adminAuthors__box__button_type_add" title="Добавить лектора" data-action="add">Добавить</a>
+													    </div>
+													</div>
+												</script>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+		<section id="author" class="modal">
+			<div class="modal__table">
+				<div class="modal__cell">
+					<div class="modal__content">
+						<div class="authorInfo">
+							<div class="authorInfo__wrapper">
+								<div class="authorInfo__content">
+									<div class="authorInfo__col authorInfo__col_1">
+										<div class="authorInfo__preview">
+											<img src="/images/vis-author-1.jpg" alt="">
+										</div>
+									</div>
+									<div class="authorInfo__col authorInfo__col_2">
+										<div class="authorInfo__title">Антон Тен</div>
+										<div class="authorInfo__text">
+											<p>В Яндексе с 2014 года. Ведущий дизайнер продукта в сервисах Переводчик, Расписания и Видео.</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal__footer"><a href="#" class="button modal__link modal_close">Закрыть</a>
+					</div>
+				</div>
+			</div>
+		</section>
+		<script type="x-template" id="scheduleItem-template">
+			<div class="scheduleItem">
+			    <div class="scheduleItem__wrapper">
+			        <div class="scheduleItem__content">
+			            <div class="scheduleItem__col scheduleItem__col_1">
+			                <div class="scheduleItem__date">
+			                    <div class="scheduleItem__day"></div>
+			
+			                    <div class="scheduleItem__month"></div>
+			
+			                    <div class="scheduleItem__time"></div>
+			                </div>
+			            </div>
+			
+			            <div class="scheduleItem__col scheduleItem__col_2">
+			                <div class="scheduleItem__title"></div>
+			
+			                <div class="scheduleItem__school"></div>
+			
+			                <div class="scheduleItem__author">
+			                    <ul class="scheduleItem__author__list"></ul>
+			                </div>
+			
+			                <div class="scheduleItem__place">
+			                    <span class="scheduleItem__place__label">Адрес:</span> <a class="scheduleItem__place__link" href="#" target="_blank"></a>
+			                </div>
+			            </div>
+			        </div>
+			    </div>
+			</div>
+		</script>
+		<script>
+			var app = {};
+		</script>
+		<script src="/scripts/library.min.js"></script>
+		<script src="/scripts/main.min.js"></script>
+	</body>
+
+</html>
