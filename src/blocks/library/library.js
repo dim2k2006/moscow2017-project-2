@@ -915,6 +915,45 @@ var Library = function () {
     };
 
     /**
+     * Check data correctness and coherence
+     * @param {String} tableName
+     * @param {Array} table
+     * @param {Object} data
+     * @returns {Object}
+     */
+    self.correct = function(tableName, table, data) {
+        var result = true;
+
+        if (tableName === 'lectures') {
+
+            table.forEach(function(item) {
+                data.school.forEach(function(id) {
+
+                    if (item.school.indexOf(id) !== -1 && new Date(item.date + ' ' + item.time).getTime() === new Date(data.date + ' ' + data.time).getTime()) {
+
+                        result = false;
+
+                    }
+
+                });
+            });
+
+            if (!result) {
+
+                return {type: 'error', msg: 'Для одной школы не может быть двух лекций одновременно.'};
+
+            }
+
+        } else {
+
+            return {type: 'error', msg: 'Не удалось получить данные для таблицы ' + table + '.'};
+
+        }
+
+        return {type: 'success', msg: 'Данные корректны.'};
+    };
+
+    /**
      * Select data from database
      * @param {Array} tables
      */
@@ -1007,11 +1046,23 @@ var Library = function () {
 
                     } else {
 
-                        response[table].push(data);
+                        isCorrect = self.correct(table, response[table], data);
 
-                        self.updateLocalStorage(response);
+                        if (isCorrect.type === 'error') {
 
-                        resolve('Данные добавлены в таблицу ' + table + '.');
+                            reject(isCorrect.msg);
+
+                            return false;
+
+                        } else {
+
+                            response[table].push(data);
+
+                            self.updateLocalStorage(response);
+
+                            resolve('Данные добавлены в таблицу ' + table + '.');
+
+                        }
 
                     }
 
@@ -1100,6 +1151,5 @@ var Library = function () {
     self.init = function() {
         self.importDefaults();
         self.loadData();
-        // self.getSchedule('2016/10/15', '2016/12/30', 2).then(function(response) {console.log(response)});
     };
 };
