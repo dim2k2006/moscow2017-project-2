@@ -212,7 +212,7 @@
                     data.schools.forEach(function(item) {
                         var isSelected = data.response.school.indexOf(item.id) !== -1 ? 'selected' : '';
 
-                        schoolSelect += '<option '+ isSelected +' value="'+ item.id +'">'+ item.title +'</option>';
+                        schoolSelect += '<option '+ isSelected +' value="'+ item.id +'">'+ item.title +' ('+ item.student +' чел.)</option>';
                     });
 
                     data.authors.forEach(function(item) {
@@ -224,7 +224,7 @@
                     data.places.forEach(function(item) {
                         var isSelected = data.response.place === item.id ? 'selected' : '';
 
-                        placeSelect += '<option '+ isSelected +' value="'+ item.id +'">'+ item.title +'</option>';
+                        placeSelect += '<option '+ isSelected +' value="'+ item.id +'">'+ item.title +' (вместимость: '+ item.capacity +' чел.)</option>';
                     });
 
 
@@ -283,7 +283,7 @@
                     placeSelect = '';
 
                 data.schools.forEach(function(item) {
-                    schoolSelect += '<option value="'+ item.id +'">'+ item.title +'</option>';
+                    schoolSelect += '<option value="'+ item.id +'">'+ item.title +' ('+ item.student +' чел.)</option>';
                 });
 
                 data.authors.forEach(function(item) {
@@ -291,7 +291,7 @@
                 });
 
                 data.places.forEach(function(item) {
-                    placeSelect += '<option value="'+ item.id +'">'+ item.title +'</option>';
+                    placeSelect += '<option value="'+ item.id +'">'+ item.title +' (вместимость: '+ item.capacity +' чел.)</option>';
                 });
 
                 box.querySelector('.adminLectures__box__col_1').style.display = 'none';
