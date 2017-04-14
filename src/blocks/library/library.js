@@ -922,7 +922,7 @@ var Library = function () {
      * @returns {Object}
      */
     self.correct = function(tableName, table, data) {
-        var result = true;
+        var result = {type: true, msg: ''};
 
         if (tableName === 'lectures') {
 
@@ -931,16 +931,17 @@ var Library = function () {
 
                     if (item.school.indexOf(id) !== -1 && new Date(item.date + ' ' + item.time).getTime() === new Date(data.date + ' ' + data.time).getTime()) {
 
-                        result = false;
+                        result.type = false;
+                        result.msg = 'Для одной школы не может быть двух лекций одновременно.';
 
                     }
 
                 });
             });
 
-            if (!result) {
+            if (!result.type) {
 
-                return {type: 'error', msg: 'Для одной школы не может быть двух лекций одновременно.'};
+                return {type: 'error', msg: result.msg};
 
             }
 
