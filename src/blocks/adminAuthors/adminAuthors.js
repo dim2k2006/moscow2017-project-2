@@ -52,10 +52,11 @@
          * Add item to database
          */
         self.add = function() {
-            self.insert('schools', {
+            self.insert('authors', {
                 id: parseInt(self.container.querySelector('.formInput__input[name="id"]').value),
                 title: self.container.querySelector('.formInput__input[name="title"]').value,
-                student: parseInt(self.container.querySelector('.formInput__input[name="student"]').value)
+                description: self.container.querySelector('.formInput__input[name="description"]').value,
+                photo: self.container.querySelector('.formInput__input[name="photo"]').value
             }).then(function(response) {
                 self.alert({
                     title: '',
@@ -63,7 +64,7 @@
                     type: 'success'
                 });
 
-                self.setupSchoolFilter();
+                self.setupAuthorFilter();
                 self.setNewState();
             }, function(response) {
                 self.alert({
@@ -78,10 +79,11 @@
          * Edit item in database
          */
         self.edit = function() {
-            self.update('schools', {
+            self.update('authors', {
                 id: parseInt(self.container.querySelector('.formInput__input[name="id"]').value),
                 title: self.container.querySelector('.formInput__input[name="title"]').value,
-                student: parseInt(self.container.querySelector('.formInput__input[name="student"]').value)
+                description: self.container.querySelector('.formInput__input[name="description"]').value,
+                photo: self.container.querySelector('.formInput__input[name="photo"]').value
             }).then(function(response) {
                 self.alert({
                     title: '',
@@ -101,12 +103,13 @@
          * Remove item from database
          */
         self.remove = function() {
-            if (confirm('Вы действительно хотите удалить выбранную школу?')) {
+            if (confirm('Вы действительно хотите удалить выбранного лектора?')) {
 
-                self.delete('schools', {
+                self.delete('authors', {
                     id: parseInt(self.container.querySelector('.formInput__input[name="id"]').value),
                     title: self.container.querySelector('.formInput__input[name="title"]').value,
-                    student: parseInt(self.container.querySelector('.formInput__input[name="student"]').value)
+                    description: self.container.querySelector('.formInput__input[name="description"]').value,
+                    photo: self.container.querySelector('.formInput__input[name="photo"]').value
                 }).then(function(response) {
                     self.alert({
                         title: '',
@@ -114,7 +117,7 @@
                         type: 'success'
                     });
 
-                    self.setupSchoolFilter();
+                    self.setupAuthorFilter();
                     self.setNewState();
                 }, function(response) {
                     self.alert({

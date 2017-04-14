@@ -984,10 +984,6 @@ var Library = function () {
 
             }
 
-        } else {
-
-            return {type: 'error', msg: 'Не удалось получить данные для таблицы ' + table + '.'};
-
         }
 
         return {type: 'success', msg: 'Данные корректны.'};
