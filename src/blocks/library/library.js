@@ -927,6 +927,13 @@ var Library = function () {
         if (tableName === 'lectures') {
 
             table.forEach(function(item) {
+                if (item.place === data.place && new Date(item.date + ' ' + item.time).getTime() === new Date(data.date + ' ' + data.time).getTime()) {
+
+                    result.type = false;
+                    result.msg = 'В одной аудитории не может быть одновременно двух разных лекций.';
+
+                }
+
                 data.school.forEach(function(id) {
 
                     if (item.school.indexOf(id) !== -1 && new Date(item.date + ' ' + item.time).getTime() === new Date(data.date + ' ' + data.time).getTime()) {
