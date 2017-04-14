@@ -174,34 +174,76 @@
          * Prepare template for edit/delete item state
          */
         self.setEditState = function() {
-            var lectureId = self.lectureSelect.value ? parseInt(self.lectureSelect.value) : '';
+            var lectureId = self.lectureSelect.value ? parseInt(self.lectureSelect.value) : '',
+                data = {};
 
-            self.getLecture(lectureId).then(function(response) {
-                var data = response[0],
-                    box = document.createElement('div');
+            self.getSchool().then(function(response) {
+                data['schools'] = response;
 
-                box.classList.add('adminLectures__edit');
+                return self.getAuthor();
+            }).then(function(response) {
+                data['authors'] = response;
 
-                box.innerHTML = self.editTemplate;
+                return self.getPlace();
+            }).then(function(response) {
+                data['places'] = response;
 
-                box.querySelector('.adminLectures__title').style.display = 'none';
+                self.getLecture(lectureId).then(function(response) {
+                    data['response'] = response[0];
 
-                box.querySelector('.formInput__input[name="id"]').value = data.id;
+                    var box = document.createElement('div');
 
-                box.querySelector('.formInput__input[name="title"]').value = data.title;
+                    box.classList.add('adminLectures__edit');
+
+                    box.innerHTML = self.editTemplate;
+
+                    var schoolSelect = '',
+                        authorSelect = '',
+                        placeSelect = '';
+
+                    data.schools.forEach(function(item) {
+                        var isSelected = data.response.school.indexOf(item.id) !== -1 ? 'selected' : '';
+
+                        schoolSelect += '<option '+ isSelected +' value="'+ item.id +'">'+ item.title +'</option>';
+                    });
+
+                    data.authors.forEach(function(item) {
+                        var isSelected = data.response.author.indexOf(item.id) !== -1 ? 'selected' : '';
+
+                        authorSelect += '<option '+ isSelected +' value="'+ item.id +'">'+ item.title +'</option>';
+                    });
+
+                    data.places.forEach(function(item) {
+                        var isSelected = data.response.place === item.id ? 'selected' : '';
+
+                        placeSelect += '<option '+ isSelected +' value="'+ item.id +'">'+ item.title +'</option>';
+                    });
 
 
+                    box.querySelector('.adminLectures__title').style.display = 'none';
 
+                    box.querySelector('.formInput__input[name="id"]').value = data.response.id;
 
-                box.querySelector('.formInput__input[name="date"]').value = data.date.day;
+                    box.querySelector('.formInput__input[name="title"]').value = data.response.title;
 
-                box.querySelector('.formInput__input[name="time"]').value = data.date.time;
+                    box.querySelector('.formSelect__select[name="school"]').innerHTML = schoolSelect;
 
-                box.querySelector('.formInput__input[name="resources"]').value = data.resources;
+                    box.querySelector('.formSelect__select[name="author"]').innerHTML = authorSelect;
 
-                box.querySelector('.adminLectures__box__button_type_add').style.display = 'none';
+                    box.querySelector('.formInput__input[name="date"]').value = data.response.date;
 
-                self.render(box);
+                    box.querySelector('.formInput__input[name="time"]').value = data.response.time;
+
+                    box.querySelector('.formSelect__select[name="place"]').innerHTML = placeSelect;
+
+                    box.querySelector('.formSelect__select[name="isOver"] option[value="' + (data.response.isOver ? 1 : 0) + '"]').selected = true;
+
+                    box.querySelector('.formInput__input[name="resources"]').value = data.response.resources;
+
+                    box.querySelector('.adminLectures__box__button_type_add').style.display = 'none';
+
+                    self.render(box);
+                });
             });
         };
 
