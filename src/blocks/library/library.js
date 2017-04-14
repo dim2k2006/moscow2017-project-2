@@ -1035,19 +1035,31 @@ var Library = function () {
 
                     } else {
 
-                        response[table] = response[table].map(function(item) {
-                             if (item.id === data.id) {
+                        isCorrect = self.correct(response, table, data);
 
-                                 item = data;
+                        if (isCorrect.type === 'error') {
 
-                             }
+                            reject(isCorrect.msg);
 
-                             return item;
-                        });
+                            return false;
 
-                        self.updateLocalStorage(response);
+                        } else {
 
-                        resolve('Данные в таблице ' + table + ' изменены.');
+                            response[table] = response[table].map(function(item) {
+                                if (item.id === data.id) {
+
+                                    item = data;
+
+                                }
+
+                                return item;
+                            });
+
+                            self.updateLocalStorage(response);
+
+                            resolve('Данные в таблице ' + table + ' изменены.');
+
+                        }
 
                     }
 
