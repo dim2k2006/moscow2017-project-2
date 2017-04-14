@@ -916,17 +916,20 @@ var Library = function () {
 
     /**
      * Check data correctness and coherence
+     * @param {Object} db
      * @param {String} tableName
-     * @param {Array} table
      * @param {Object} data
      * @returns {Object}
      */
-    self.correct = function(tableName, table, data) {
+    self.correct = function(db, tableName, data) {
         var result = {type: true, msg: ''};
 
         if (tableName === 'lectures') {
 
-            table.forEach(function(item) {
+            db[tableName].forEach(function(item) {
+                var totalStudents = 0,
+                    placeCapacity = 0;
+
                 if (item.place === data.place && new Date(item.date + ' ' + item.time).getTime() === new Date(data.date + ' ' + data.time).getTime()) {
 
                     result.type = false;
@@ -935,6 +938,13 @@ var Library = function () {
                 }
 
                 data.school.forEach(function(id) {
+                    db['schools'].forEach(function(item) {
+                        if (item.id === id) {
+
+                            totalStudents += item.student;
+
+                        }
+                    });
 
                     if (item.school.indexOf(id) !== -1 && new Date(item.date + ' ' + item.time).getTime() === new Date(data.date + ' ' + data.time).getTime()) {
 
@@ -944,6 +954,22 @@ var Library = function () {
                     }
 
                 });
+
+                db['places'].forEach(function(placeItem) {
+                    if (placeItem.id === data.place) {
+
+                        placeCapacity = placeItem.capacity;
+
+                    }
+                });
+
+
+                if (totalStudents > placeCapacity) {
+
+                    result.type = false;
+                    result.msg = 'Вместимость аудитории должна быть больше или равной количеству студентов на лекции.';
+
+                }
             });
 
             if (!result.type) {
@@ -1054,7 +1080,7 @@ var Library = function () {
 
                     } else {
 
-                        isCorrect = self.correct(table, response[table], data);
+                        isCorrect = self.correct(response, table, data);
 
                         if (isCorrect.type === 'error') {
 
