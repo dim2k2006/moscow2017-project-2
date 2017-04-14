@@ -87,12 +87,16 @@
          * Edit item in database
          */
         self.edit = function() {
-            self.update('places', {
+            self.update('lectures', {
                 id: parseInt(self.container.querySelector('.formInput__input[name="id"]').value),
                 title: self.container.querySelector('.formInput__input[name="title"]').value,
-                address: self.container.querySelector('.formInput__input[name="address"]').value,
-                link: self.container.querySelector('.formInput__input[name="link"]').value,
-                capacity: parseInt(self.container.querySelector('.formInput__input[name="capacity"]').value)
+                school: [].slice.call(self.container.querySelectorAll('.formSelect__select[name="school"] option:checked')).map(function(item) {return parseInt(item.value)}),
+                author: [].slice.call(self.container.querySelectorAll('.formSelect__select[name="author"] option:checked')).map(function(item) {return parseInt(item.value)}),
+                date: self.container.querySelector('.formInput__input[name="date"]').value,
+                time: self.container.querySelector('.formInput__input[name="time"]').value,
+                place: parseInt(self.container.querySelector('.formSelect__select[name="place"]').value),
+                isOver: parseInt(self.container.querySelector('.formSelect__select[name="isOver"]').value) === 1,
+                resources: self.container.querySelector('.formInput__input[name="resources"]').value
             }).then(function(response) {
                 self.alert({
                     title: '',
