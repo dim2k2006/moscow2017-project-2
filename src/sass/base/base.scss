@@ -112,5 +112,5 @@ textarea::-ms-reveal {
 }
 
 textarea {
-    //@include textareaDefault;
+    @include textareaDefault;
 }

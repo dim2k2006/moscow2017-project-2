@@ -2,6 +2,7 @@ include ../adminSchedule/adminSchedule
 include ../adminLectures/adminLectures
 include ../adminSchools/adminSchools
 include ../adminPlaces/adminPlaces
+include ../adminAuthors/adminAuthors
 
 mixin admin
     +b('section').admin
@@ -25,6 +26,9 @@ mixin admin
                             +e('li').aside__item
                                 +e('a').aside__link(href="#places")!= "Аудитории"
 
+                            +e('li').aside__item
+                                +e('a').aside__link(href="#authors")!= "Лекторы"
+
                 +e('div').col(class="admin__col_main")
                     +e('div').main
                         +e('div').box(id="schedule", class="admin__box_state_active")
@@ -38,3 +42,6 @@ mixin admin
 
                         +e('div').box(id="places")
                             +adminPlaces
+
+                        +e('div').box(id="authors")
+                            +adminAuthors

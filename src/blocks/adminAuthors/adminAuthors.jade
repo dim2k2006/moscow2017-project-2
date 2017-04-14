@@ -1,0 +1,94 @@
+include ../formInput/formInput
+include ../formSelect/formSelect
+
+mixin adminAuthors
+    +b('div').adminAuthors
+        +e('div').wrapper
+            +e('div').header
+                +e('div').title!= "Выберите лектора для редактирования"
+
+                +e('div').filter
+                    +e('div').filter__item
+                        +formSelect({
+                            label: 'Выберите лектора',
+                            name: 'author',
+                            id: 'author',
+                            list: []
+                        })
+
+            +e('div').content
+
+
+            +e('div').footer
+                script(type="x-template", id="adminAuthors-template").
+                    <div class="adminAuthors__box">
+                        <div class="adminAuthors__box__header">
+                            <div class="adminAuthors__title">Или добавьте нового лектора</div>
+                        </div>
+
+                        <div class="adminAuthors__box__content">
+                            <div class="adminAuthors__box__col adminAuthors__box__col_1">
+                                <div class="formInput">
+                                    <div class="formInput__wrapper">
+                                        <div class="formInput__header">
+                                            <label for="id" class="formInput__label">Id</label>
+                                        </div>
+
+                                        <div class="formInput__content">
+                                            <input type="text" name="id" id="id" value="" class="formInput__input">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="adminAuthors__box__col adminAuthors__box__col_2">
+                                <div class="formInput">
+                                    <div class="formInput__wrapper">
+                                        <div class="formInput__header">
+                                            <label for="title" class="formInput__label">Имя и фамилия</label>
+                                        </div>
+
+                                        <div class="formInput__content">
+                                            <input type="text" name="title" id="title" value="" class="formInput__input">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="adminAuthors__box__col adminAuthors__box__col_3">
+                                <div class="formInput">
+                                    <div class="formInput__wrapper">
+                                        <div class="formInput__header">
+                                            <label for="description" class="formInput__label">Описание</label>
+                                        </div>
+
+                                        <div class="formInput__content">
+                                            <textarea type="text" name="description" id="description" value="" class="formInput__input"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="adminAuthors__box__col adminAuthors__box__col_4">
+                                <div class="formInput">
+                                    <div class="formInput__wrapper">
+                                        <div class="formInput__header">
+                                            <label for="photo" class="formInput__label">Ссылка на фотографию</label>
+                                        </div>
+
+                                        <div class="formInput__content">
+                                            <input type="text" name="photo" id="photo" value="" class="formInput__input">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="adminAuthors__box__footer">
+                            <a href="#" class="adminAuthors__box__button adminAuthors__box__button_type_edit" title="Изменить данные о лекторе" data-action="edit">Изменить</a>
+
+                            <a href="#" class="adminAuthors__box__button adminAuthors__box__button_type_remove" title="Удалить лектора" data-action="remove">Удалить</a>
+
+                            <a href="#" class="adminAuthors__box__button adminAuthors__box__button_type_add" title="Добавить лектора" data-action="add">Добавить</a>
+                        </div>
+                    </div>

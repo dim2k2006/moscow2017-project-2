@@ -22,6 +22,12 @@ var Library = function () {
             title: 'string',
             student: 'number'
         },
+        authors: {
+            id: 'number',
+            title: 'string',
+            description: 'string',
+            photo: 'string'
+        },
         places: {
             id: 'number',
             title: 'string',
