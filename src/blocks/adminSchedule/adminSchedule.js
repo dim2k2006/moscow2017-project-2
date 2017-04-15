@@ -77,15 +77,15 @@
 
                 contentItem.querySelector('.adminSchedule__box__name').innerHTML = item.title;
 
-                contentItem.querySelector('.adminSchedule__box__school').innerHTML += self.expand(item.school, {title: 'schools', data: response.schools});
+                contentItem.querySelector('.adminSchedule__box__school').innerHTML += self.expand(item.school, {title: 'schools', data: response.schools}, 'title');
 
-                contentItem.querySelector('.adminSchedule__box__author').innerHTML += self.expand(item.author, {title: 'authors', data: response.authors});
+                contentItem.querySelector('.adminSchedule__box__author').innerHTML += self.expand(item.author, {title: 'authors', data: response.authors}, 'title');
 
                 contentItem.querySelector('.adminSchedule__box__date').innerHTML += item.date;
 
                 contentItem.querySelector('.adminSchedule__box__time').innerHTML += item.time;
 
-                contentItem.querySelector('.adminSchedule__box__place').innerHTML += self.expand([item.place], {title: 'places', data: response.places});
+                contentItem.querySelector('.adminSchedule__box__place').innerHTML += self.expand([item.place], {title: 'places', data: response.places}, 'title');
 
                 contentItem.querySelector('.adminSchedule__box__status').innerHTML += item.isOver ? 'Лекция закончилась' : 'Лекция еще не закончилась';
 

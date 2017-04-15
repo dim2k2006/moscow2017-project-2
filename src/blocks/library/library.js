@@ -833,9 +833,10 @@ var Library = function () {
      * Expand array of id into string
      * @param {Array} list of id
      * @param {Object} table data for filtering
+     * @param {String} param for retrieve
      * @returns {string} result string
      */
-    self.expand = function(list, table) {
+    self.expand = function(list, table, param) {
         var resultList = [];
 
         if (list.length > 0 && table.data.length > 0) {
@@ -848,7 +849,7 @@ var Library = function () {
 
                 try {
 
-                    return resultItem[0].title
+                    return resultItem[0][param];
 
                 } catch(error) {
 
