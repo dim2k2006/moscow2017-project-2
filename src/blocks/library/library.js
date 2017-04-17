@@ -134,7 +134,7 @@ var Library = function () {
                 "date": "2016/10/19",
                 "time": "14:00",
                 "place": 1,
-                "isOver": false,
+                "isOver": true,
                 "resources": "#"
             },
             {
@@ -343,7 +343,7 @@ var Library = function () {
                 "date": "2016/11/1",
                 "time": "14:00",
                 "place": 0,
-                "isOver": false,
+                "isOver": true,
                 "resources": "#"
             },
             {
