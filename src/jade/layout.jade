@@ -1,5 +1,4 @@
 include mixins/bemto
-include ../blocks/modal/modal
 
 doctype html
 
@@ -18,8 +17,8 @@ html(lang="ru")
         meta(name="Keywords" content=pageKeywords || "")
         title=pageTitle || ""
 
-        link(href='/css/vendor.min.css' rel='stylesheet')
-        link(href='/css/main.min.css' rel='stylesheet')
+        link(href='css/vendor.min.css' rel='stylesheet')
+        link(href='css/main.min.css' rel='stylesheet')
 
         <!--[if lt IE 9]>
         script(src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js")
@@ -31,42 +30,8 @@ html(lang="ru")
 
             block content
 
-        +modal
-
-        script(type="x-template", id="scheduleItem-template").
-            <div class="scheduleItem">
-                <div class="scheduleItem__wrapper">
-                    <div class="scheduleItem__content">
-                        <div class="scheduleItem__col scheduleItem__col_1">
-                            <div class="scheduleItem__date">
-                                <div class="scheduleItem__day"></div>
-
-                                <div class="scheduleItem__month"></div>
-
-                                <div class="scheduleItem__time"></div>
-                            </div>
-                        </div>
-
-                        <div class="scheduleItem__col scheduleItem__col_2">
-                            <div class="scheduleItem__title"></div>
-
-                            <div class="scheduleItem__school"></div>
-
-                            <div class="scheduleItem__author">
-                                <ul class="scheduleItem__author__list"></ul>
-                            </div>
-
-                            <div class="scheduleItem__place">
-                                <span class="scheduleItem__place__label">Адрес:</span> <a class="scheduleItem__place__link" href="#" target="_blank"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
         script.
             var app = {};
 
-        script(src='/scripts/library.min.js')
-        script(src='/scripts/main.min.js')
+        script(src='scripts/library.min.js')
+        script(src='scripts/main.min.js')
