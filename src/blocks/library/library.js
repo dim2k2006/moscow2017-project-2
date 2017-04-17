@@ -140,7 +140,7 @@ var Library = function () {
             {
                 "id": 9,
                 "title": "Лекция 2. Git & Workflow",
-                "school": [1],
+                "school": [0, 1],
                 "author": [8],
                 "date": "2016/10/19",
                 "time": "16:00",
@@ -426,7 +426,7 @@ var Library = function () {
             {
                 "id": 35,
                 "title": "Лекция 11. Работа в команде",
-                "school": [2],
+                "school": [1, 2],
                 "author": [25],
                 "date": "2016/12/6",
                 "time": "14:00",
