@@ -36,6 +36,22 @@
 
 3. Вместимость аудитории должна быть больше или равной количеству студентов на лекции.
 
+## Подключение
+
+Подключить файл библиотеки:
+
+```html
+<script src="/static/scripts/library.min.js"></script>
+```
+
+## Инициализация
+
+```js
+var library = new Library();
+
+library.init();
+```
+
 ## Методы
 
 ### getSchedule(dateFrom, dateTo, placeId)

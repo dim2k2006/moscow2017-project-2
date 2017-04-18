@@ -1188,17 +1188,9 @@ var Library = function () {
     };
 
     /**
-     * Import properties from Main class
-     */
-    self.importDefaults = function() {
-        self.body = app.modules.main.body;
-    };
-
-    /**
      * Init module
      */
     self.init = function() {
-        self.importDefaults();
         self.loadData();
     };
 };
