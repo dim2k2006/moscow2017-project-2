@@ -63,6 +63,51 @@ library.init();
 
 Каждое из вышеперечисленных свойств представляет собой массив объектов с данными.
 
+```js
+var data = {
+    lectures: [
+        {
+            "id": 0,
+            "title": "Лекция 1. Адаптивная вёрстка",
+            "school": [0, 1],
+            "author": [1],
+            "date": "2016/10/20",
+            "time": "14:00",
+            "place": 0,
+            "isOver": false,
+            "resources": "#"
+        }
+    ],
+     
+     schools: [
+         {
+             "id": 0,
+             "title": "Школа разработки интерфейсов",
+             "student": 30
+         }
+     ],
+     
+     authors: [
+         {
+             "id": 0,
+             "title": "Антон Тен",
+             "description": "В Яндексе с 2014 года. Ведущий дизайнер продукта в сервисах Переводчик, Расписания и Видео.",
+             "photo": "images/vis-author-0.jpg"
+         }
+     ],
+     
+     places: [
+         {
+             "id": 0,
+             "title": "Синий кит",
+             "address": "ул. Льва Толстого, 16",
+             "link": "https://maps.yandex.by/-/C6EciCja",
+             "capacity": 60
+         }
+     ]
+}
+```
+
 ### lectures
 
 - **id**:
