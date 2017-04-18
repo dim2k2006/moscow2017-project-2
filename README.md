@@ -72,8 +72,13 @@ library.init();
 
 Также в полученном объекте есть информация о школах, лекторах и аудиториях.
 
+Пример использования: 
 
-
+```js
+library.getSchedule('2016/10/12', '2016/12/20', 0).then(function(response) {
+    // do something with response
+});
+```
 
 
 
