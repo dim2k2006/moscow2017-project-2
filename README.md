@@ -331,3 +331,23 @@ library.select(['lectures']).then(function(response) {
     // do something with response
 });
 ```
+
+### update(table, data)
+
+- **table**:
+  - Тип: `String`
+  - Название таблицы.
+  
+- **data**:
+  - Тип: `Object`
+  - Данные для обновления.
+  
+Возвращает promise, который возвращает строку с результатом запроса на обновление данных.
+
+Пример использования:
+
+```js
+library.update('schools', {id: 0, title: 'Новое название школы', student: 30}).then(function(response) {
+    // do something with response
+});
+```
