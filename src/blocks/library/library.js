@@ -785,7 +785,7 @@ var Library = function () {
 
                 }
 
-                resolve(result.length > 0 ? result : [{title: 'Лектор с идентификатором ' + id + 'не найден.'}]);
+                resolve(result);
             });
         });
     };
