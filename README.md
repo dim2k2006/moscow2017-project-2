@@ -351,3 +351,23 @@ library.update('schools', {id: 0, title: 'Новое название школы
     // do something with response
 });
 ```
+
+### insert(table, data)
+
+- **table**:
+  - Тип: `String`
+  - Название таблицы.
+  
+- **data**:
+  - Тип: `Object`
+  - Данные для добавления.
+  
+Возвращает promise, который возвращает строку с результатом запроса на добавление данных.
+
+Пример использования:
+
+```js
+library.insert('authors', {title: 'Имя и фамилия лектора', description: 'Краткое описание лектора', photo: 'Ссылка на фотографию'}).then(function(response) {
+    // do something with response
+});
+```
