@@ -387,3 +387,25 @@ library.insert('authors', {title: 'Имя и фамилия лектора', des
     // do something with response
 });
 ```
+
+### delete(table, data)
+
+- **table**:
+  - Тип: `String`
+  - Название таблицы.
+  
+- **data**:
+  - Тип: `Object`
+  - Данные для добавления.
+  
+Данный метод используется для удаления данных из базы данных.
+
+Возвращает promise, который возвращает строку с результатом запроса на удаление данных.
+
+Пример использования:
+
+```js
+library.delete('places', {id: 1, title: 'Название аудитории', address: 'Адрес аудитории', link: 'Ссылка на карту', capacity: 60}).then(function(response) {
+    // do something with response
+});
+```

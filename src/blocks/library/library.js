@@ -1136,6 +1136,8 @@ var Library = function () {
 
     /**
      * Delete data from database
+     * @param {String} table
+     * @param {Object} data
      */
     self.delete = function(table, data) {
         return new Promise(function(resolve, reject) {
