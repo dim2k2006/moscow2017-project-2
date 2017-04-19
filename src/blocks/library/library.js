@@ -812,7 +812,7 @@ var Library = function () {
 
                 }
 
-                resolve(result.length > 0 ? result : [{title: 'Место с идентификатором ' + id + 'не найдено.'}]);
+                resolve(result);
             });
         });
     };
