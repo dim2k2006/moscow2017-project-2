@@ -1046,7 +1046,7 @@ var Library = function () {
 
                     } else {
 
-                        isCorrect = self.correct(response, table, data);
+                        var isCorrect = self.correct(response, table, data);
 
                         if (isCorrect.type === 'error') {
 
@@ -1056,19 +1056,31 @@ var Library = function () {
 
                         } else {
 
+                            var updated = false;
+
                             response[table] = response[table].map(function(item) {
                                 if (item.id === data.id) {
 
                                     item = data;
+
+                                    updated = true;
 
                                 }
 
                                 return item;
                             });
 
-                            self.updateLocalStorage(response);
+                            if (updated) {
 
-                            resolve('Данные в таблице ' + table + ' изменены.');
+                                self.updateLocalStorage(response);
+
+                                resolve('Данные в таблице ' + table + ' изменены.');
+
+                            } else {
+
+                                reject('Запись с идентификатором ' + data.id + ' не найдена.');
+
+                            }
 
                         }
 
@@ -1105,7 +1117,7 @@ var Library = function () {
 
                     } else {
 
-                        isCorrect = self.correct(response, table, data);
+                        var isCorrect = self.correct(response, table, data);
 
                         if (isCorrect.type === 'error') {
 
