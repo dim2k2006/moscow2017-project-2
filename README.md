@@ -276,3 +276,18 @@ library.getAuthor(8).then(function(response) {
 });
 ```
 
+### getPlace(id)
+
+- **id**:
+  - Тип: `Number`
+  - Идентификатор аудитории. Чтобы получить информацию о всех аудиториях, то необходимо указать пустую строку.
+  
+Возвращает promise, который возвращает массив, содержащий объект с информацией о аудитории.
+
+Пример использования:
+
+```js
+library.getPlace(1).then(function(response) {
+    // do something with response
+});
+```
