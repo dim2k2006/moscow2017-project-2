@@ -11,6 +11,7 @@
 - [Подключение](#Подключение)
 - [Инициализация](#Инициализация)
 - [Методы](#Методы)
+- [Пример использования](#Пример-использования)
 
 ## Установка
 
@@ -420,4 +421,114 @@ library.insert('authors', {title: 'Имя и фамилия лектора', des
 library.delete('places', {id: 1, title: 'Название аудитории', address: 'Адрес аудитории', link: 'Ссылка на карту', capacity: 60}).then(function(response) {
     // do something with response
 });
+```
+
+## Пример использования
+
+```js
+var library = new Library();
+
+library.init();
+
+
+
+// getSchedule
+
+// library.getSchedule('2016/10/12', '2016/10/20', 2).then(function(response) {
+//     console.log(response.lectures);
+// });
+
+
+
+// getLecture
+
+// library.getLecture(20).then(function(response) {
+//     console.log(response);
+// });
+
+
+
+// getSchool
+
+// library.getSchool('').then(function(response) {
+//     console.log(response);
+// });
+
+
+
+// getAuthor
+
+// library.getAuthor(123).then(function(response) {
+//     console.log(response);
+// });
+
+
+
+// getPlace
+
+// library.getPlace(190).then(function(response) {
+//     console.log(response)
+// });
+
+
+
+// expand
+
+// library.getSchedule('2016/10/12', '2016/10/20', '').then(function(response) {
+//     response.lectures.forEach(function(item) {
+//         var result = library.expand(item.school, {title: 'schools', data: response.schools}, 'title');
+//
+//         console.log(item.title + ' читается для школ: ' + result);
+//     });
+// });
+
+
+
+//select
+
+// library.select(['lectures']).then(function(response) {
+//     console.log(response);
+// });
+
+
+
+// update
+
+// library.update('schools', {id: 2, title: 'Новое название школы', student: 30}).then(function(response) {
+//     console.log(response);
+//
+//     library.select(['schools']).then(function(response) {
+//         console.log(response);
+//     });
+// });
+
+
+
+// insert
+
+// library.insert('authors', {title: 'Имя и фамилия лектора', description: 'Краткое описание лектора', photo: 'Ссылка на фотографию'}).then(function(response) {
+//     console.log(response);
+//
+//     library.select(['authors']).then(function(response) {
+//         console.log(response);
+//     });
+// });
+
+
+
+// delete
+
+// library.insert('places', {title: 'Название аудитории', address: 'Адрес аудитории', link: 'Ссылка на карту', capacity: 60}).then(function(response) {
+//     library.select(['places']).then(function(response) {
+//         console.log(response);
+//
+//         library.delete('places', {id: 3, title: 'Название аудитории', address: 'Адрес аудитории', link: 'Ссылка на карту', capacity: 60}).then(function(response) {
+//             console.log(response);
+//
+//             library.select(['places']).then(function(response) {
+//                 console.log(response);
+//             });
+//         });
+//     });
+// });
 ```
