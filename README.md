@@ -244,7 +244,21 @@ library.getLecture(5).then(function(response) {
 });
 ```
 
+### getSchool(id)
 
+- **id**:
+  - Тип: `Number`
+  - Идентификатор школы. Чтобы получить информацию о всех школах, то необходимо указать пустую строку.
+  
+Возвращает promise, который возвращает массив, содержащий объект с информацией о школе.
+
+Пример использования:
+
+```js
+library.getSchool(1).then(function(response) {
+    // do something with response
+});
+```
 
 
 
