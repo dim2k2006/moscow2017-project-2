@@ -730,7 +730,9 @@ var Library = function () {
                 }
 
                 resolve(result);
-            })
+            }, function(response) {
+                reject(response);
+            });
         });
     };
 
@@ -1000,13 +1002,21 @@ var Library = function () {
                 var result = {};
 
                 tables.forEach(function(table) {
-                    if (response.hasOwnProperty(table)) {
+                    try {
 
-                        result[table] = response[table];
+                        if (response.hasOwnProperty(table)) {
 
-                    } else {
+                            result[table] = response[table];
 
-                        throw new Error('Не удалось получить данные для таблицы ' + table + '.');
+                        } else {
+
+                            throw new Error('Не удалось получить данные для таблицы ' + table + '.');
+
+                        }
+
+                    } catch (e) {
+
+                        reject(e.name + '. ' + e.message);
 
                     }
                 });

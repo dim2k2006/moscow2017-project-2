@@ -160,6 +160,12 @@
                 });
 
                 self.lectureSelect.innerHTML = html;
+            }, function(response) {
+                self.alert({
+                    title: '',
+                    text: response,
+                    type: 'error'
+                });
             });
         };
 
@@ -251,6 +257,12 @@
                     box.querySelector('.adminLectures__box__button_type_add').style.display = 'none';
 
                     self.render(box);
+                }, function(response) {
+                    self.alert({
+                        title: '',
+                        text: response,
+                        type: 'error'
+                    });
                 });
             });
         };

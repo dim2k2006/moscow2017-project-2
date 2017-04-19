@@ -315,3 +315,19 @@ var result = library.expand([0, 1], {title: 'schools', data: response.schools}, 
 
 // Переменная result будет содержать строку с названиями школ разделенными запятой.
 ```
+
+### select(tables)
+
+- **tables**:
+  - Тип: `Object`
+  - Массив со списком таблиц.
+  
+Возвращает promise, который возвращает объект, каждое свойство которого является массивом с данными.
+
+Пример использования:
+
+```js
+library.select(['lectures']).then(function(response) {
+    // do something with response
+});
+```
