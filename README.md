@@ -260,22 +260,19 @@ library.getSchool(1).then(function(response) {
 });
 ```
 
+### getAuthor(id)
 
+- **id**:
+  - Тип: `Number`
+  - Идентификатор лектора. Чтобы получить информацию о всех лекторах, то необходимо указать пустую строку.
+  
+Возвращает promise, который возвращает массив, содержащий объект с информацией о лекторе.
 
-
-
-
-
+Пример использования:
 
 ```js
-$().cropper({
-  autoCrop: false,
-  ready: function () {
-    // Do something here
-    // ...
-
-    // And then
-    $(this).cropper('crop');
-  }
+library.getAuthor(8).then(function(response) {
+    // do something with response
 });
 ```
+
